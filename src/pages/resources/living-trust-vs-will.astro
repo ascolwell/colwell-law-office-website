@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import { site } from "../../data/site";
+
+const rows = [
+  { question: "Avoids Wisconsin probate court?", will: "No", trust: "Yes, for assets held in the trust" },
+  { question: "Keeps your affairs private?", will: "No — probate is public record", trust: "Yes" },
+  { question: "Helps if you become incapacitated?", will: "No", trust: "Yes" },
+  { question: "Names a guardian for minor children?", will: "Yes", trust: "Yes (paired with a simple will)" },
+  { question: "Requires retitling assets ('funding')?", will: "No", trust: "Yes — an essential step" },
+  { question: "Typical upfront cost", will: "Lower", trust: "Higher, but often saves money later" },
+  { question: "Typical cost to your family later", will: "Court costs & attorney fees through probate", trust: "Minimal — no probate required" },
+];
+
+const faqs = [
+  {
+    q: "Can I have both a will and a trust?",
+    a: "Yes — and for most clients, we recommend it. A 'pour-over' will works alongside your trust as a safety net, catching anything accidentally left out of the trust.",
+  },
+  {
+    q: "Is a trust only worth it if I have a lot of assets?",
+    a: "No. Even modest estates can face months of probate court, filing fees, and stress. Many Wisconsin families choose a trust specifically to spare their children that process — regardless of the size of the estate.",
+  },
+  {
+    q: "What if I already have a will — do I need to start over?",
+    a: "Not necessarily. We can review what you have and build a trust around it, or update your existing documents. You don't need to start from scratch.",
+  },
+  {
+    q: "How do I know which one is right for my family?",
+    a: "That depends on your assets, your family situation, and your goals — which is exactly what we'll walk through together during a consultation.",
+  },
+];
+---
+
+<BaseLayout
+  title="Living Trust vs. Will in Wisconsin"
+  description="Living trust vs. will: a clear, side-by-side comparison to help Wisconsin families decide which estate planning tool actually fits their needs."
+>
+  <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Living Trust vs. Will: Which Do You Need?</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Both protect your family. They just do it in very different ways — and the difference
+      matters a lot once you're gone or unable to make decisions yourself.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a href="/contact/" class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700">
+        Schedule Your Consultation
+      </a>
+      <a href={site.phoneHref} class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60">
+        Call {site.phone}
+      </a>
+    </div>
+
+    <div class="mt-10 overflow-x-auto rounded-sm border border-navy-900/10">
+      <table class="w-full min-w-[560px] border-collapse text-left text-sm">
+        <thead>
+          <tr class="bg-navy-900 text-cream-100">
+            <th scope="col" class="px-5 py-3 font-semibold"> </th>
+            <th scope="col" class="px-5 py-3 font-semibold">Will Only</th>
+            <th scope="col" class="px-5 py-3 font-semibold">Revocable Living Trust</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row, i) => (
+              <tr class={i % 2 === 0 ? "bg-cream-100" : "bg-cream-200"}>
+                <th scope="row" class="px-5 py-4 font-medium text-navy-900">{row.question}</th>
+                <td class="px-5 py-4 text-ink-700">{row.will}</td>
+                <td class="px-5 py-4 font-medium text-navy-900">{row.trust}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose-legal mt-10 text-ink-700">
+      <h2>The short version</h2>
+      <p>
+        A will is simple and important — but it doesn't avoid Wisconsin probate court. A revocable
+        living trust takes a bit more upfront work (you have to retitle assets into it), but it's
+        built specifically to let your family skip probate, keep your affairs private, and step in
+        smoothly if you're ever incapacitated.
+      </p>
+      <p>
+        Most families who want to make things as easy as possible on their loved ones choose a
+        trust-based plan. Families with very simple estates sometimes start with a will alone. The
+        right answer depends on your specific situation — which is exactly what we'll talk through
+        in your consultation.
+      </p>
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Frequently Asked Questions</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={faqs} />
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Not Sure Which One Fits Your Family?"
+        subtext="Let's talk it through — no pressure, no obligation, just clear answers."
+      />
+    </div>
+  </section>
+</BaseLayout>

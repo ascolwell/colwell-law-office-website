@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
 import { site } from "../../data/site";
 
 const entries = await getCollection("faq");
@@ -8,19 +9,41 @@ const sorted = entries.sort((a, b) => a.data.order - b.data.order);
 const rendered = await Promise.all(
   sorted.map(async (entry) => ({ entry, Content: (await render(entry)).Content }))
 );
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: sorted.map((entry) => ({
+    "@type": "Question",
+    name: entry.data.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: entry.body?.trim() ?? "",
+    },
+  })),
+};
 ---
 
 <BaseLayout
-  title="Frequently Asked Questions"
-  description={`Answers to common estate planning questions from ${site.firmName}.`}
+  title="Estate Planning FAQ | Wisconsin Attorney"
+  description={`Straight answers to the questions Wisconsin families ask most about wills, living trusts, probate, and estate planning costs at ${site.firmName}.`}
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">FAQ</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Frequently Asked Questions</h1>
     <p class="mt-4 text-ink-700">
-      Answers to some of the questions we hear most often. Don't see yours? Reach out and we'll be
-      glad to help.
+      Straight answers to the questions we hear most often — before you ever have to ask. Don't see
+      yours? Reach out and we'll be glad to help.
     </p>
+    <div class="mt-6">
+      <a
+        href="/contact/"
+        class="inline-block rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Schedule Your Consultation
+      </a>
+    </div>
 
     <div class="mt-10 space-y-4">
       {
@@ -39,16 +62,11 @@ const rendered = await Promise.all(
       }
     </div>
 
-    <div class="mt-14 rounded-sm bg-navy-900 px-8 py-10 text-center text-cream-100">
-      <h2 class="font-display text-2xl font-semibold">Still have questions?</h2>
-      <div class="mt-6 flex flex-wrap justify-center gap-4">
-        <a href={site.phoneHref} class="rounded-sm bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-400">
-          Call {site.phone}
-        </a>
-        <a href="/contact/" class="rounded-sm border border-cream-100/30 px-6 py-3 text-sm font-semibold text-cream-100 hover:border-cream-100/60">
-          Send a Message
-        </a>
-      </div>
+    <div class="mt-14">
+      <CtaBanner
+        heading="Still Have Questions?"
+        subtext="The fastest way to get a straight answer is a free, no-pressure conversation."
+      />
     </div>
   </section>
 </BaseLayout>

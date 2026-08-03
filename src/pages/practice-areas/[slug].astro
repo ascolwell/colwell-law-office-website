@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
 import { site, practiceAreas } from "../../data/site";
 
 export function getStaticPaths() {
@@ -13,27 +15,63 @@ const { area } = Astro.props;
 const otherAreas = practiceAreas.filter((a) => a.slug !== area.slug);
 ---
 
-<BaseLayout title={area.name} description={area.description}>
+<BaseLayout title={area.seoTitle} description={area.metaDescription}>
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
-    <a href="/practice-areas/" class="text-sm font-semibold text-gold-700 hover:text-gold-600">&larr; All Practice Areas</a>
-    <p class="mt-6 text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Practice Area</p>
-    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">{area.name}</h1>
-    <p class="prose-legal mt-6 max-w-2xl text-lg text-ink-700">{area.description}</p>
+    <a href="/practice-areas/" class="text-sm font-semibold text-gold-700 hover:text-gold-600">&larr; All Services</a>
+    <p class="mt-6 text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">{area.name}</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">{area.heroHeading}</h1>
 
-    <div class="mt-12 rounded-sm bg-navy-900 px-8 py-10 text-cream-100">
-      <h2 class="font-display text-2xl font-semibold">Talk to {site.attorneyName} about your {area.name.toLowerCase()}</h2>
-      <div class="mt-6 flex flex-wrap gap-4">
-        <a href={site.phoneHref} class="rounded-sm bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-400">
-          Call {site.phone}
-        </a>
-        <a href="/contact/" class="rounded-sm border border-cream-100/30 px-6 py-3 text-sm font-semibold text-cream-100 hover:border-cream-100/60">
-          Send a Message
-        </a>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href="/contact/"
+        class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Schedule Your Consultation
+      </a>
+      <a
+        href={site.phoneHref}
+        class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60"
+      >
+        Call {site.phone}
+      </a>
+    </div>
+
+    <div class="prose-legal mt-8 max-w-2xl text-lg text-ink-700">
+      {area.intro.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+
+    <div class="mt-10 rounded-sm border border-navy-900/10 bg-cream-200 p-7">
+      <h2 class="font-display text-xl font-semibold text-navy-900">How This Protects Your Family</h2>
+      <ul class="mt-4 space-y-3">
+        {
+          area.benefits.map((benefit) => (
+            <li class="flex items-start gap-3 text-ink-700">
+              <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-500/15 text-sm text-gold-700" aria-hidden="true">
+                ✓
+              </span>
+              {benefit}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Frequently Asked Questions</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={area.faqs} />
       </div>
     </div>
 
     <div class="mt-14">
-      <h2 class="font-display text-xl font-semibold text-navy-900">Other Practice Areas</h2>
+      <CtaBanner
+        heading={`Talk to ${site.attorneyName} About Your ${area.name}`}
+        subtext="A free, no-pressure consultation is the fastest way to get clear answers about your specific situation."
+      />
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-xl font-semibold text-navy-900">Other Ways We Help Wisconsin Families</h2>
       <div class="mt-5 grid gap-4 sm:grid-cols-2">
         {
           otherAreas.map((other) => (

@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import { site } from "../../data/site";
+
+const consequences = [
+  {
+    title: "Wisconsin law decides who gets what",
+    detail: "Without a will, your estate is distributed according to a fixed state formula — not your personal wishes. It may not match what you'd actually want.",
+  },
+  {
+    title: "A court decides who raises your children",
+    detail: "If you have minor children and no will naming a guardian, a judge — not you — decides who raises them if something happens to you.",
+  },
+  {
+    title: "Your family may need court permission just to act",
+    detail: "Without powers of attorney, your family may have to petition for guardianship to pay your bills or make medical decisions if you're incapacitated.",
+  },
+  {
+    title: "Everything goes through probate court",
+    detail: "Your estate becomes a public court matter — taking months (often over a year), and costing your family in fees and time.",
+  },
+  {
+    title: "A loved one with a disability could lose benefits",
+    detail: "Without special needs planning, an inheritance left directly to a family member with a disability can disqualify them from Medicaid or SSI.",
+  },
+  {
+    title: "Family disagreements become more likely",
+    detail: "When your wishes aren't written down, well-meaning family members can end up in conflict over what you 'would have wanted.'",
+  },
+];
+
+const faqs = [
+  {
+    q: "I'm young and healthy — do I really need to worry about this yet?",
+    a: "Incapacity and death don't wait for a convenient time. Powers of attorney matter at any age, and if you have minor children, naming a guardian in a will is one of the most important things you can do — regardless of how healthy you are.",
+  },
+  {
+    q: "What if I have a small estate — does this still apply to me?",
+    a: "Yes. Guardianship for minor children, powers of attorney for incapacity, and basic probate all apply regardless of how much you own. The size of your estate mostly affects how long and costly probate will be — not whether these risks exist.",
+  },
+  {
+    q: "Isn't a will from an online template good enough?",
+    a: "Online templates can miss state-specific requirements, fail to account for your full situation, or create ambiguity that leads to disputes. A plan reviewed by an actual Wisconsin attorney helps make sure it will actually hold up when your family needs it.",
+  },
+  {
+    q: "How long does it take to fix this?",
+    a: "Most clients complete a full estate plan within a few weeks of their first consultation. It's rarely as complicated — or as expensive — as people expect.",
+  },
+];
+---
+
+<BaseLayout
+  title="What Happens If You Don't Have an Estate Plan"
+  description="Without a will or estate plan, Wisconsin law — not you — decides who gets your property, who raises your children, and who manages your affairs."
+>
+  <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">
+      What Happens If You Don't Have a Plan?
+    </h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Without an estate plan, Wisconsin law makes these decisions for your family — not you. Here's
+      what that actually looks like.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a href="/contact/" class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700">
+        Schedule Your Consultation
+      </a>
+      <a href={site.phoneHref} class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60">
+        Call {site.phone}
+      </a>
+    </div>
+
+    <div class="mt-10 space-y-4">
+      {
+        consequences.map((item) => (
+          <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-6">
+            <h2 class="font-display text-lg font-semibold text-navy-900">{item.title}</h2>
+            <p class="mt-2 text-ink-700">{item.detail}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="prose-legal mt-10 text-ink-700">
+      <h2>The good news: this is fixable, starting today</h2>
+      <p>
+        None of this is permanent. A straightforward estate plan — often just a trust, a will, and
+        a couple of powers of attorney — puts you back in control of every one of these decisions.
+        Most clients are surprised at how quickly and painlessly it comes together once they
+        finally sit down to do it.
+      </p>
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Frequently Asked Questions</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={faqs} />
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Put Yourself Back in Control"
+        subtext="Schedule a free, no-pressure consultation and take the first step toward protecting your family."
+        primaryLabel="Protect Your Family Today"
+      />
+    </div>
+  </section>
+</BaseLayout>

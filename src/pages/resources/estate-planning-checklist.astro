@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import { site } from "../../data/site";
+
+const checklistGroups = [
+  {
+    title: "Take stock",
+    items: [
+      "List your major assets: home, bank accounts, retirement accounts, investments, life insurance, business interests",
+      "Note how each asset is currently titled (individually, jointly, with a beneficiary named)",
+      "Gather a rough list of debts and major financial obligations",
+    ],
+  },
+  {
+    title: "Make your key decisions",
+    items: [
+      "Decide who should inherit your property, and in what proportions",
+      "Choose a guardian for any minor children",
+      "Choose someone to manage your finances if you're unable to (financial power of attorney)",
+      "Choose someone to make medical decisions if you're unable to (healthcare power of attorney)",
+      "Consider whether any beneficiary has special needs and would need a special needs trust",
+    ],
+  },
+  {
+    title: "Put it in writing",
+    items: [
+      "Have a will drafted (at minimum) or a revocable living trust with a pour-over will",
+      "Have your financial and healthcare powers of attorney drafted",
+      "Review each document with your attorney until you fully understand it — don't sign anything you don't understand",
+    ],
+  },
+  {
+    title: "Make it actually work",
+    items: [
+      "Retitle assets into your trust if you have one ('funding' the trust)",
+      "Update beneficiary designations on retirement accounts and life insurance to match your plan",
+      "Store your original documents somewhere safe, and make sure your executor or trustee knows where they are",
+      "Tell your key decision-makers (guardian, agents, trustee) that you've named them",
+    ],
+  },
+  {
+    title: "Keep it current",
+    items: [
+      "Review your plan every 3–5 years",
+      "Update your plan after a marriage, divorce, birth, death, move, or major change in assets",
+      "Revisit your named guardian and agents periodically to make sure they're still the right fit",
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: "I've done some of this already — do I still need an attorney?",
+    a: "Getting organized on your own is a great first step. An attorney's role is to make sure your documents are legally valid in Wisconsin, actually accomplish what you intend, and are properly funded and coordinated — the details that are easy to get wrong on your own.",
+  },
+  {
+    q: "This feels overwhelming — where should I actually start?",
+    a: "Start with a consultation. We'll go through this checklist together, figure out exactly where you stand, and build a plan step by step — you don't have to have it all figured out before we talk.",
+  },
+  {
+    q: "What documents should I bring to my consultation?",
+    a: "Nothing is required to get started, though a rough list of your assets and any existing estate planning documents can help us move faster. We'll tell you exactly what's helpful once we've talked about your situation.",
+  },
+];
+---
+
+<BaseLayout
+  title="Estate Planning Checklist for Wisconsin Families"
+  description="A practical, no-jargon estate planning checklist for Wisconsin families — see where your plan stands today and what to tackle next."
+>
+  <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Your Estate Planning Checklist</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      You don't have to figure this out alone, but it helps to know where you stand. Work through
+      this list at your own pace — then bring your questions to a consultation.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a href="/contact/" class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700">
+        Schedule Your Consultation
+      </a>
+      <a href={site.phoneHref} class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60">
+        Call {site.phone}
+      </a>
+    </div>
+
+    <div class="mt-10 space-y-8">
+      {
+        checklistGroups.map((group, gi) => (
+          <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-7">
+            <h2 class="font-display text-lg font-semibold text-navy-900">
+              {gi + 1}. {group.title}
+            </h2>
+            <ul class="mt-4 space-y-3">
+              {group.items.map((item) => (
+                <li class="flex items-start gap-3 text-ink-700">
+                  <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-navy-900/30 text-xs" aria-hidden="true">
+                    {" "}
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Frequently Asked Questions</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={faqs} />
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Ready to Check Everything Off This List?"
+        subtext="We'll go through this checklist together and build a plan around exactly what your family needs."
+        primaryLabel="Start Your Estate Plan"
+      />
+    </div>
+  </section>
+</BaseLayout>

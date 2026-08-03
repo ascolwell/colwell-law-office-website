@@ -1,117 +1,198 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import TrustBar from "../components/TrustBar.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
 import { site, practiceAreas } from "../data/site";
 import logo from "../assets/logo.png";
+
+const homeFaqs = [
+  {
+    q: "Do I need to be wealthy to need an estate plan?",
+    a: "No. If you own a home, have savings, or have people who depend on you — a spouse, children, or grandchildren — you have something worth protecting. Most of our clients are everyday Wisconsin families, not the ultra-wealthy.",
+  },
+  {
+    q: "What's the difference between a will and a living trust?",
+    a: "A will tells the court how to distribute your property, but it still goes through Wisconsin probate. A revocable living trust is designed to let your family skip probate entirely for trust assets — faster, more private, and far less stressful.",
+  },
+  {
+    q: "How much does this cost?",
+    a: "We offer flat-fee pricing for most estate planning services, so you'll know your cost upfront before any work begins — never surprise hourly billing. Your consultation will include a clear, specific quote.",
+  },
+  {
+    q: "Do I have to come to an office?",
+    a: "Not at all. We meet virtually, at your home, or at a mutually convenient location, anywhere in Wisconsin. Whatever's easiest for you.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Estate Planning Attorney"
-  description={`${site.firmName} helps individuals and families in Wisconsin plan their wills, trusts, and powers of attorney with the guidance of an attorney who is also a CPA.`}
+  title="Wisconsin Estate Planning Attorney"
+  description="Colwell Law Office helps Wisconsin families protect what matters with revocable living trusts, wills, probate guidance, and powers of attorney. Flat-fee pricing, virtual meetings statewide."
 >
   <section class="bg-navy-950 text-cream-100">
-    <div class="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
+    <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center md:py-24">
       <div>
-        <p class="text-sm font-semibold tracking-[0.2em] text-gold-400 uppercase">Estate Planning Attorney</p>
+        <p class="text-sm font-semibold tracking-[0.2em] text-gold-400 uppercase">Wisconsin Estate Planning Attorney</p>
         <h1 class="font-display mt-4 text-4xl leading-tight font-semibold text-cream-100 md:text-5xl">
-          {site.tagline}
+          Protect Your Family. Simplify Their Future.
         </h1>
         <p class="mt-6 max-w-xl text-lg text-navy-100/90">
-          {site.firmName} helps individuals and families put a clear, thoughtfully built estate
-          plan in place — wills, trusts, and powers of attorney — so the people you love are
-          protected and your wishes are honored.
+          Estate planning isn't about paperwork — it's about making sure the people you love are
+          cared for, protected, and never left guessing. {site.attorneyFirst} helps Wisconsin
+          families build a plan that avoids probate court and gives everyone peace of mind.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
           <a
             href="/contact/"
             class="rounded-sm bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 transition-colors hover:bg-gold-400"
           >
-            Schedule a Consultation
+            Schedule Your Consultation
           </a>
           <a
-            href="/practice-areas/"
+            href={site.phoneHref}
             class="rounded-sm border border-cream-100/30 px-6 py-3 text-sm font-semibold text-cream-100 transition-colors hover:border-cream-100/60"
           >
-            View Practice Areas
+            Call {site.phone}
           </a>
         </div>
+        <p class="mt-4 text-sm text-navy-100/70">
+          Free, no-pressure consultation &middot; {site.serviceArea} &middot; Flat-fee pricing
+        </p>
       </div>
       <div class="justify-self-center">
-        <Image
-          src={logo}
-          alt={`${site.firmName} seal`}
-          width={280}
-          height={280}
-          class="h-56 w-56 invert md:h-72 md:w-72"
-        />
+        <Image src={logo} alt={`${site.firmName} seal`} width={280} height={280} class="h-56 w-56 invert md:h-72 md:w-72" />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-14">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-6">
+        <p class="text-xs font-semibold tracking-[0.15em] text-gold-700 uppercase">Are you in the right place?</p>
+        <h2 class="font-display mt-2 text-lg font-semibold text-navy-900">This is for you if you want to:</h2>
+        <ul class="mt-3 space-y-2 text-sm text-ink-700">
+          <li>&bull; Keep your family out of probate court</li>
+          <li>&bull; Make things simple for your spouse and kids</li>
+          <li>&bull; Protect a loved one with special needs</li>
+          <li>&bull; Finally get this handled — without the confusion</li>
+        </ul>
+      </div>
+      <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-6">
+        <p class="text-xs font-semibold tracking-[0.15em] text-gold-700 uppercase">Can you trust us?</p>
+        <h2 class="font-display mt-2 text-lg font-semibold text-navy-900">An attorney and a CPA</h2>
+        <p class="mt-3 text-sm text-ink-700">
+          {site.attorneyName} brings both legal and financial training to your plan — so it's not
+          just legally sound, but built around how your assets and taxes actually work. Wisconsin
+          focused. Direct communication. No jargon.
+        </p>
+      </div>
+      <div class="flex flex-col rounded-sm bg-navy-900 p-6 text-cream-100">
+        <p class="text-xs font-semibold tracking-[0.15em] text-gold-400 uppercase">What should you do next?</p>
+        <h2 class="font-display mt-2 text-lg font-semibold">Start with a conversation</h2>
+        <p class="mt-3 flex-1 text-sm text-navy-100/90">
+          Schedule a free, no-pressure consultation. We'll talk about your family and your goals —
+          no obligation, no sales pitch.
+        </p>
+        <a
+          href="/contact/"
+          class="mt-4 inline-block rounded-sm bg-gold-500 px-5 py-2.5 text-center text-sm font-semibold text-navy-950 hover:bg-gold-400"
+        >
+          Schedule Your Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-200 py-14">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="font-display text-2xl font-semibold text-navy-900 md:text-3xl">
+        Why Wisconsin Families Choose Colwell Law Office
+      </h2>
+      <div class="mt-8">
+        <TrustBar />
       </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="max-w-2xl">
-      <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Why Colwell Law Office</p>
-      <h2 class="font-display mt-3 text-3xl font-semibold text-navy-900">An attorney who also thinks like your accountant</h2>
-      <p class="mt-4 text-ink-700">
-        {site.attorneyName} is both a licensed attorney and a Certified Public Accountant — a
-        combination that's rare in estate planning. That means your plan is built not just to be
-        legally sound, but to hold up financially: tax-aware, practical, and tailored to how your
-        assets actually work.
-      </p>
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Estate Planning Services</p>
+        <h2 class="font-display mt-2 text-3xl font-semibold text-navy-900">How We Protect Your Family</h2>
+      </div>
+      <a href="/practice-areas/" class="hidden text-sm font-semibold text-gold-700 hover:text-gold-600 md:inline">
+        View all services &rarr;
+      </a>
     </div>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        practiceAreas.map((area) => (
+          <a
+            href={`/practice-areas/${area.slug}/`}
+            class="group block rounded-sm border border-navy-900/10 bg-cream-100 p-7 transition-shadow hover:shadow-lg"
+          >
+            <h3 class="font-display text-lg font-semibold text-navy-900 group-hover:text-gold-700">{area.name}</h3>
+            <p class="mt-2 text-sm text-ink-700">{area.short}</p>
+            <span class="mt-3 inline-block text-sm font-semibold text-gold-700">Learn more &rarr;</span>
+          </a>
+        ))
+      }
+    </div>
+    <a href="/practice-areas/" class="mt-6 inline-block text-sm font-semibold text-gold-700 hover:text-gold-600 md:hidden">
+      View all services &rarr;
+    </a>
   </section>
 
   <section class="bg-cream-200 py-16">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="flex items-end justify-between gap-4">
-        <h2 class="font-display text-3xl font-semibold text-navy-900">Practice Areas</h2>
-        <a href="/practice-areas/" class="hidden text-sm font-semibold text-gold-700 hover:text-gold-600 md:inline">
-          See all practice areas &rarr;
-        </a>
+      <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">How It Works</p>
+      <h2 class="font-display mt-2 text-3xl font-semibold text-navy-900">Getting Started Is Simple</h2>
+      <div class="mt-8 grid gap-8 md:grid-cols-3">
+        <div>
+          <span class="font-display text-3xl font-semibold text-gold-700">1</span>
+          <h3 class="font-display mt-2 text-lg font-semibold text-navy-900">Schedule a Consultation</h3>
+          <p class="mt-2 text-sm text-ink-700">
+            We'll talk about your family, your goals, and your questions — no pressure, no
+            obligation, and no confusing legal jargon.
+          </p>
+        </div>
+        <div>
+          <span class="font-display text-3xl font-semibold text-gold-700">2</span>
+          <h3 class="font-display mt-2 text-lg font-semibold text-navy-900">Build Your Plan Together</h3>
+          <p class="mt-2 text-sm text-ink-700">
+            {site.attorneyFirst} designs a plan around your specific situation and walks you
+            through every document in plain English before you sign anything.
+          </p>
+        </div>
+        <div>
+          <span class="font-display text-3xl font-semibold text-gold-700">3</span>
+          <h3 class="font-display mt-2 text-lg font-semibold text-navy-900">Sign & Protect Your Family</h3>
+          <p class="mt-2 text-sm text-ink-700">
+            Once your plan is signed and your trust is properly funded, your family is protected —
+            and you can stop worrying about "someday."
+          </p>
+        </div>
       </div>
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        {
-          practiceAreas.map((area) => (
-            <a
-              href={`/practice-areas/${area.slug}/`}
-              class="group block rounded-sm border border-navy-900/10 bg-cream-100 p-8 transition-shadow hover:shadow-lg"
-            >
-              <h3 class="font-display text-xl font-semibold text-navy-900 group-hover:text-gold-700">{area.name}</h3>
-              <p class="mt-3 text-sm text-ink-700">{area.short}</p>
-              <span class="mt-4 inline-block text-sm font-semibold text-gold-700">Learn more &rarr;</span>
-            </a>
-          ))
-        }
-      </div>
-      <a href="/practice-areas/" class="mt-8 inline-block text-sm font-semibold text-gold-700 hover:text-gold-600 md:hidden">
-        See all practice areas &rarr;
-      </a>
     </div>
   </section>
 
   <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-10 rounded-sm bg-navy-900 px-8 py-12 text-cream-100 md:grid-cols-[2fr_1fr] md:items-center md:px-14">
-      <div>
-        <h2 class="font-display text-2xl font-semibold md:text-3xl">Ready to put a plan in place?</h2>
-        <p class="mt-3 text-navy-100/90">
-          Reach out today to schedule a consultation with {site.attorneyName} and start building a
-          plan for your legacy.
-        </p>
-      </div>
-      <div class="flex flex-col gap-3 md:items-end">
-        <a
-          href={site.phoneHref}
-          class="rounded-sm bg-gold-500 px-6 py-3 text-center text-sm font-semibold text-navy-950 hover:bg-gold-400"
-        >
-          Call {site.phone}
-        </a>
-        <a
-          href="/contact/"
-          class="rounded-sm border border-cream-100/30 px-6 py-3 text-center text-sm font-semibold text-cream-100 hover:border-cream-100/60"
-        >
-          Send a Message
-        </a>
-      </div>
+    <CtaBanner
+      heading="Ready to Protect Your Family?"
+      subtext="Schedule a free, no-pressure consultation and find out exactly what a plan built around your family would look like."
+    />
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 pb-16">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Common Questions</p>
+    <h2 class="font-display mt-2 text-3xl font-semibold text-navy-900">Frequently Asked Questions</h2>
+    <div class="mt-8">
+      <FaqAccordion faqs={homeFaqs} />
     </div>
+    <a href="/faq/" class="mt-6 inline-block text-sm font-semibold text-gold-700 hover:text-gold-600">
+      See all frequently asked questions &rarr;
+    </a>
   </section>
 </BaseLayout>

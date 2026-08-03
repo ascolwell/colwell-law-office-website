@@ -14,6 +14,30 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = `${title} | ${site.firmName}`;
 const favicon = await getImage({ src: logo, width: 64, height: 64, format: "png" });
+const ogImage = await getImage({ src: logo, width: 630, height: 630, format: "png" });
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Attorney",
+  name: site.firmName,
+  founder: site.attorneyName,
+  telephone: site.phone,
+  email: site.email,
+  areaServed: {
+    "@type": "State",
+    name: "Wisconsin",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "WI",
+    addressCountry: "US",
+  },
+  description:
+    "Wisconsin estate planning attorney helping families with revocable living trusts, wills, probate, trust administration, powers of attorney, and special needs planning. Meetings held virtually and throughout Wisconsin.",
+  priceRange: "$$",
+  url: canonicalURL.toString(),
+};
 ---
 
 <!doctype html>
@@ -25,10 +49,14 @@ const favicon = await getImage({ src: logo, width: 64, height: 64, format: "png"
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(ogImage.src, Astro.site)} />
+    <meta name="twitter:card" content="summary" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,10 +64,11 @@ const favicon = await getImage({ src: logo, width: 64, height: 64, format: "png"
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer />

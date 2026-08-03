@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import TrustBar from "../components/TrustBar.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import { site } from "../data/site";
+
+const comparison = [
+  { theirs: "Billed by the hour, with surprise fees", ours: "Flat-fee pricing, quoted upfront" },
+  { theirs: "Handed off to rotating paralegals", ours: "Direct access to your attorney" },
+  { theirs: "Dense legal jargon, no explanation", ours: "Plain-English answers to every question" },
+  { theirs: "One office, one location", ours: "Meet virtually, at home, or wherever works" },
+  { theirs: "Generic, templated documents", ours: "A plan built around your family" },
+];
+
+const faqs = [
+  {
+    q: "Is a virtual estate planning attorney really as good as meeting in person?",
+    a: "Yes. Every document is the same legally binding document whether we meet over video or across a desk. What matters is that your plan is built correctly and you understand it — and many clients find virtual meetings easier to fit into a busy schedule, without needing to take time off work or arrange care for family members.",
+  },
+  {
+    q: "What if I'd still prefer to meet in person?",
+    a: "That's completely fine. We can meet at your home or another convenient location anywhere in Wisconsin — whatever makes you most comfortable.",
+  },
+  {
+    q: "How do I know I can trust an attorney I haven't met in an office?",
+    a: "You'll speak directly with Alexander from your very first call — not a salesperson, not an intake coordinator. You can ask as many questions as you want before committing to anything, and there's never any pressure to sign.",
+  },
+  {
+    q: "What happens if I need to make changes later?",
+    a: "Life changes, and your plan should keep up. We're always available to review and update your documents as your family, assets, or wishes change over time.",
+  },
+];
+---
+
+<BaseLayout
+  title="Why Choose Colwell Law Office"
+  description="See why Wisconsin families choose Colwell Law Office for estate planning: flat-fee pricing, direct attorney access, plain-English guidance, and meetings that fit your life."
+>
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Why Choose Us</p>
+    <h1 class="font-display mt-3 max-w-3xl text-4xl font-semibold text-navy-900">
+      Estate Planning That Feels Personal, Not Transactional
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-ink-700">
+      You have a lot of options for getting your estate plan done. Here's why Wisconsin families
+      keep choosing to work with {site.attorneyFirst} instead of a big firm, a DIY document mill,
+      or putting it off another year.
+    </p>
+    <div class="mt-6">
+      <a
+        href="/contact/"
+        class="inline-block rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Schedule Your Consultation
+      </a>
+    </div>
+
+    <div class="mt-14">
+      <TrustBar />
+    </div>
+
+    <div class="mt-16">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">The Difference Is in the Details</h2>
+      <div class="mt-6 overflow-x-auto rounded-sm border border-navy-900/10">
+        <table class="w-full min-w-[480px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="bg-navy-900 text-cream-100">
+              <th scope="col" class="px-5 py-3 font-semibold">A Typical Law Firm</th>
+              <th scope="col" class="px-5 py-3 font-semibold">Colwell Law Office</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparison.map((row, i) => (
+                <tr class={i % 2 === 0 ? "bg-cream-100" : "bg-cream-200"}>
+                  <td class="px-5 py-4 text-ink-700">{row.theirs}</td>
+                  <td class="px-5 py-4 font-medium text-navy-900">{row.ours}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-16 grid gap-8 rounded-sm bg-cream-200 p-8 md:grid-cols-[auto_1fr] md:items-center md:p-10">
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-navy-900">An Attorney Who Also Thinks Like a CPA</h2>
+        <p class="mt-3 max-w-2xl text-ink-700">
+          {site.attorneyName} combines a law license with a Certified Public Accountant's eye for
+          the financial details — so your plan holds up legally and makes sense with your taxes
+          and accounts. It's a rare combination, and it means fewer surprises for your family
+          later.
+        </p>
+        <a href="/about/" class="mt-4 inline-block text-sm font-semibold text-gold-700 hover:text-gold-600">
+          Meet {site.attorneyFirst} &rarr;
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Common Questions About Working With Us</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={faqs} />
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <CtaBanner
+        heading="See the Difference for Yourself"
+        subtext="Schedule a free, no-pressure consultation and experience estate planning that actually feels personal."
+      />
+    </div>
+  </section>
+</BaseLayout>

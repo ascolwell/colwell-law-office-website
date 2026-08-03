@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import { site } from "../../data/site";
+
+const costs = [
+  {
+    title: "Court filing fees",
+    detail: "Wisconsin charges probate filing fees based on the size of the estate, paid to the court before the process can even begin.",
+  },
+  {
+    title: "Attorney fees",
+    detail: "Most estates benefit from legal guidance through probate, which adds to the overall cost — often billed hourly unless a flat fee is available.",
+  },
+  {
+    title: "Appraisal & administrative costs",
+    detail: "Real estate, businesses, and other property may need formal appraisals, plus costs for notices, bonds, and certified copies.",
+  },
+  {
+    title: "Time — the cost no one talks about",
+    detail: "Wisconsin probate commonly takes several months to over a year. During that time, assets can be tied up and inaccessible to your family.",
+  },
+  {
+    title: "Privacy",
+    detail: "Probate is a matter of public record — anyone can see what you owned and who inherited it.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is probate always required in Wisconsin?",
+    a: "Not always. Wisconsin offers simplified procedures for smaller estates, and assets that are jointly owned or have a named beneficiary (like life insurance or retirement accounts) often avoid probate automatically. We can review your situation and tell you honestly whether probate would be required.",
+  },
+  {
+    q: "How can my family avoid probate entirely?",
+    a: "The most common way is a properly funded revocable living trust. Assets held in the trust generally bypass probate court entirely, passing directly to your beneficiaries according to the trust's terms.",
+  },
+  {
+    q: "Does probate cost the same for every estate?",
+    a: "No — costs scale with the size and complexity of the estate, and can increase further if there are disputes among heirs or complicated assets like a business or out-of-state property.",
+  },
+  {
+    q: "What if I'm currently going through probate for a loved one?",
+    a: "We can guide you through the process now, even if there's no trust in place. Many of our clients come to us specifically because they're navigating probate for a parent or spouse and want experienced, compassionate guidance.",
+  },
+];
+---
+
+<BaseLayout
+  title="Probate Costs in Wisconsin"
+  description="What does probate actually cost in Wisconsin? Court fees, attorney fees, time, and privacy — and how a living trust can help your family avoid it."
+>
+  <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">What Does Probate Cost in Wisconsin?</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Probate doesn't just cost money — it costs your family time, privacy, and peace of mind
+      during an already difficult season. Here's what's actually involved.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a href="/contact/" class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700">
+        Schedule Your Consultation
+      </a>
+      <a href={site.phoneHref} class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60">
+        Call {site.phone}
+      </a>
+    </div>
+
+    <div class="mt-10 space-y-4">
+      {
+        costs.map((item) => (
+          <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-6">
+            <h2 class="font-display text-lg font-semibold text-navy-900">{item.title}</h2>
+            <p class="mt-2 text-ink-700">{item.detail}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="prose-legal mt-10 text-ink-700">
+      <h2>The good news</h2>
+      <p>
+        Probate costs are almost entirely avoidable with the right planning in place ahead of
+        time. A properly funded revocable living trust is the most common way Wisconsin families
+        keep their loved ones out of probate court altogether — saving them the fees, the delay,
+        and the stress.
+      </p>
+      <p>
+        Every estate is different, and the only way to know exactly what your family would face is
+        to talk through your specific situation. That's exactly what a consultation is for.
+      </p>
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Frequently Asked Questions</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={faqs} />
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Help Your Family Skip Probate Court"
+        subtext="A revocable living trust could save your loved ones months of court, thousands in costs, and a public record of your affairs."
+      />
+    </div>
+  </section>
+</BaseLayout>

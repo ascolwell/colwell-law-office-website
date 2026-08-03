@@ -1,17 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
 import { site } from "../data/site";
 import headshot from "../assets/alexander-colwell-headshot.jpg";
 ---
 
 <BaseLayout
-  title="About Alexander S. Colwell"
-  description={`Meet ${site.attorneyName}, attorney and CPA at ${site.firmName}, focused on wills, trusts, and powers of attorney.`}
+  title="About Your Wisconsin Estate Planning Attorney"
+  description={`Meet ${site.attorneyName} — a Wisconsin estate planning attorney and CPA who believes planning should be about protecting your family, not just paperwork.`}
 >
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">About</p>
-    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">{site.attorneyName}</h1>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">
+      Meet the Attorney Who'll Actually Handle Your Plan
+    </h1>
+    <p class="mt-3 max-w-2xl text-lg text-ink-700">{site.attorneyName} &middot; Founder, {site.firmName}</p>
 
     <div class="mt-10 grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
       <div>
@@ -29,54 +33,63 @@ import headshot from "../assets/alexander-colwell-headshot.jpg";
             <li><a href={`mailto:${site.email}`} class="hover:text-gold-700">{site.email}</a></li>
           </ul>
         </div>
+        <a
+          href="/contact/"
+          class="mt-4 block rounded-sm bg-navy-900 px-5 py-3 text-center text-sm font-semibold text-cream-100 hover:bg-navy-700"
+        >
+          Schedule Your Consultation
+        </a>
       </div>
 
       <div class="prose-legal max-w-2xl text-ink-700">
         <p class="text-lg">
-          {site.attorneyName} founded {site.firmName} to give individuals and families in
-          Wisconsin a straightforward, personal approach to estate planning — one built on the
-          belief that a good plan should be as much about your family's peace of mind as it is
-          about the paperwork.
+          For {site.attorneyFirst}, estate planning has never really been about legal
+          documents. It's about the phone call that <em>doesn't</em> have to happen — the one
+          where a family member has to figure out probate court, guess at what you wanted, or
+          scramble to get access to your accounts during the worst week of their life.
         </p>
-        <h2>A dual perspective: attorney and CPA</h2>
+        <p>
+          {site.attorneyName} founded {site.firmName} to give Wisconsin families a
+          straightforward, personal path to that peace of mind — without the confusing legal
+          jargon, without the upsell, and without the office visit if you don't want one.
+        </p>
+
+        <h2>An attorney who also thinks like a CPA</h2>
         <p>
           What sets Alexander apart is a background that combines legal training with a
           Certified Public Accountant's eye for the financial details. Estate plans don't just
           need to be legally valid — they need to make sense with your taxes, your accounts, and
-          how your assets are actually titled. That combination lets Alexander catch issues that a
-          purely legal (or purely financial) review might miss.
+          how your assets are actually titled. That combination catches issues that a purely
+          legal (or purely financial) review might miss.
         </p>
-        <h2>A personal approach</h2>
+
+        <h2>A personal approach, from start to finish</h2>
         <p>
-          Every family's situation is different, and estate planning documents drafted from a
-          generic template rarely fit well. Alexander takes the time to understand your goals —
-          for your spouse, your children, your business, or your care as you age — before
-          recommending a plan built around them.
+          You won't be handed off to a paralegal or a call center. You'll work directly with
+          Alexander — from your first conversation through the day your plan is signed, and
+          anytime you need to make changes down the road.
         </p>
+        <p>
+          Every family's situation is different, and documents drafted from a generic template
+          rarely fit well. Alexander takes the time to understand your goals — for your spouse,
+          your children, your business, or your own care as you age — before recommending a plan
+          built around them.
+        </p>
+
         <h2>Credentials</h2>
         <ul>
-          <li>Licensed Attorney (Esq.)</li>
+          <li>Licensed Wisconsin Attorney (Esq.)</li>
           <li>Certified Public Accountant (CPA)</li>
-          <li>Focused on Wills, Trusts, and Powers of Attorney</li>
+          <li>Focused on wills, revocable living trusts, probate, trust administration, powers of attorney, and special needs planning</li>
         </ul>
-        <p class="text-sm text-ink-500">
-          Have specific questions about your background you'd like added here — law school,
-          admissions, bar memberships, prior experience, community involvement? Send them over and
-          this section will be updated.
-        </p>
       </div>
     </div>
 
-    <div class="mt-14 rounded-sm bg-navy-900 px-8 py-10 text-center text-cream-100">
-      <h2 class="font-display text-2xl font-semibold">Schedule a consultation with Alexander</h2>
-      <div class="mt-6 flex flex-wrap justify-center gap-4">
-        <a href={site.phoneHref} class="rounded-sm bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-400">
-          Call {site.phone}
-        </a>
-        <a href="/contact/" class="rounded-sm border border-cream-100/30 px-6 py-3 text-sm font-semibold text-cream-100 hover:border-cream-100/60">
-          Send a Message
-        </a>
-      </div>
+    <div class="mt-16">
+      <CtaBanner
+        heading="Start Your Estate Plan Today"
+        subtext="Schedule a free, no-pressure consultation with Alexander and get clear answers about what your family actually needs."
+      />
     </div>
   </section>
 </BaseLayout>

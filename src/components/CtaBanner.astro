@@ -1,0 +1,41 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  heading: string;
+  subtext?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  compact?: boolean;
+}
+
+const {
+  heading,
+  subtext,
+  primaryLabel = "Schedule Your Consultation",
+  primaryHref = "/contact/",
+  compact = false,
+} = Astro.props;
+---
+
+<div class:list={["rounded-sm bg-navy-900 text-cream-100", compact ? "px-6 py-8" : "px-8 py-10 md:px-14"]}>
+  <div class="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
+    <h2 class:list={["font-display font-semibold", compact ? "text-xl" : "text-2xl md:text-3xl"]}>{heading}</h2>
+    {subtext && <p class="max-w-xl text-navy-100/90">{subtext}</p>}
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href={primaryHref}
+        class="rounded-sm bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 transition-colors hover:bg-gold-400"
+      >
+        {primaryLabel}
+      </a>
+      <a
+        href={site.phoneHref}
+        class="rounded-sm border border-cream-100/30 px-6 py-3 text-sm font-semibold text-cream-100 transition-colors hover:border-cream-100/60"
+      >
+        Call {site.phone}
+      </a>
+    </div>
+    <p class="text-xs text-navy-100/70">No pressure. No obligation. Just a conversation about your family.</p>
+  </div>
+</div>

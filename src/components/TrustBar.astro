@@ -1,0 +1,28 @@
+---
+import { trustBuilders } from "../data/site";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={["grid gap-x-8 gap-y-5 sm:grid-cols-2", compact ? "lg:grid-cols-3" : "lg:grid-cols-3"]}>
+  {
+    trustBuilders.map((item) => (
+      <div class="flex items-start gap-3">
+        <span
+          class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-500/15 text-gold-700"
+          aria-hidden="true"
+        >
+          ✓
+        </span>
+        <div>
+          <p class="font-semibold text-navy-900">{item.title}</p>
+          {!compact && <p class="mt-0.5 text-sm text-ink-700">{item.detail}</p>}
+        </div>
+      </div>
+    ))
+  }
+</div>

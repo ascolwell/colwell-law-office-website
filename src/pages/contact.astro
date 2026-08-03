@@ -1,18 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
 import { site } from "../data/site";
+
+const faqs = [
+  {
+    q: "Is the consultation really free, with no obligation?",
+    a: "Yes. We'll talk about your family, your goals, and your questions. You'll leave with a clear idea of what a plan would involve and what it would cost — there's never any pressure to move forward.",
+  },
+  {
+    q: "How quickly will I hear back?",
+    a: `We respond to every message personally, typically within one business day. If it's urgent, calling ${site.phone} directly is the fastest way to reach us.`,
+  },
+  {
+    q: "Do I need to prepare anything before we talk?",
+    a: "No — just show up with your questions. If it's helpful, a rough sense of your assets and family situation can speed things along, but it's not required for a first conversation.",
+  },
+  {
+    q: "Do you meet clients in person?",
+    a: "Yes, when it makes sense — at your home or another convenient location anywhere in Wisconsin. Many clients prefer meeting by video or phone instead, and both options work equally well.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Contact"
-  description={`Get in touch with ${site.firmName} to schedule an estate planning consultation.`}
+  title="Contact a Wisconsin Estate Planning Attorney"
+  description={`Schedule a free, no-pressure consultation with ${site.firmName}. Serving clients virtually and in person throughout Wisconsin.`}
 >
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Contact</p>
-    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Let's talk about your plan</h1>
-    <p class="mt-4 max-w-2xl text-ink-700">
-      Reach out by phone or email, or send a message below and {site.attorneyName} will get back
-      to you.
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Let's Talk About Protecting Your Family</h1>
+    <p class="mt-4 max-w-2xl text-lg text-ink-700">
+      Reach out by phone, email, or the form below. There's no pressure and no obligation — just a
+      conversation about your family and what a plan built around them would look like.
     </p>
 
     <div class="mt-12 grid gap-10 md:grid-cols-[1fr_1.2fr]">
@@ -30,16 +50,20 @@ import { site } from "../data/site";
           </a>
         </div>
         <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-6">
-          <h2 class="font-display text-sm font-semibold tracking-wide text-navy-900 uppercase">Office Hours</h2>
+          <h2 class="font-display text-sm font-semibold tracking-wide text-navy-900 uppercase">Hours</h2>
           <p class="mt-2 text-ink-700">{site.hours}</p>
         </div>
         <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-6">
-          <h2 class="font-display text-sm font-semibold tracking-wide text-navy-900 uppercase">Location</h2>
-          <p class="mt-2 text-ink-700">{site.address}</p>
+          <h2 class="font-display text-sm font-semibold tracking-wide text-navy-900 uppercase">How We Meet</h2>
+          <p class="mt-2 text-ink-700">{site.serviceArea}. {site.meetingOptions}</p>
         </div>
       </div>
 
       <form class="space-y-5 rounded-sm border border-navy-900/10 bg-cream-100 p-8 shadow-sm" data-contact-form>
+        <p class="text-sm text-ink-700">
+          Fill this out and we'll reach out to schedule your free consultation — usually within one
+          business day.
+        </p>
         <div>
           <label for="name" class="block text-sm font-semibold text-navy-900">Name</label>
           <input
@@ -47,6 +71,7 @@ import { site } from "../data/site";
             id="name"
             name="name"
             required
+            autocomplete="name"
             class="mt-2 w-full rounded-sm border border-navy-900/20 bg-cream-100 px-4 py-2.5 text-ink-900 focus:border-gold-600 focus:ring-1 focus:ring-gold-600 focus:outline-none"
           />
         </div>
@@ -57,6 +82,7 @@ import { site } from "../data/site";
             id="email"
             name="email"
             required
+            autocomplete="email"
             class="mt-2 w-full rounded-sm border border-navy-900/20 bg-cream-100 px-4 py-2.5 text-ink-900 focus:border-gold-600 focus:ring-1 focus:ring-gold-600 focus:outline-none"
           />
         </div>
@@ -66,6 +92,7 @@ import { site } from "../data/site";
             type="tel"
             id="phone"
             name="phone"
+            autocomplete="tel"
             class="mt-2 w-full rounded-sm border border-navy-900/20 bg-cream-100 px-4 py-2.5 text-ink-900 focus:border-gold-600 focus:ring-1 focus:ring-gold-600 focus:outline-none"
           />
         </div>
@@ -83,23 +110,30 @@ import { site } from "../data/site";
           type="submit"
           class="w-full rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 transition-colors hover:bg-navy-700"
         >
-          Send Message
+          Schedule Your Consultation
         </button>
         <p class="text-xs text-ink-500">
-          This form currently needs to be connected to an email or form-handling service (e.g.
-          Formspree, Netlify Forms, or a mailto endpoint) before it will actually deliver
-          submissions — see the note left for you in this file.
+          This form currently needs to be connected to an email or form-handling service before it
+          will actually deliver submissions — see the note left for you in this file.
         </p>
       </form>
+    </div>
+
+    <div class="mt-16 max-w-4xl">
+      <h2 class="font-display text-2xl font-semibold text-navy-900">Before You Reach Out</h2>
+      <div class="mt-6">
+        <FaqAccordion faqs={faqs} />
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <!--
-  NOTE FOR ALEX: This form doesn't submit anywhere yet. Since this is a static Astro site,
-  you'll need to wire it up to a form backend, for example:
-    - Formspree (https://formspree.io) — add action="https://formspree.io/f/yourFormId" method="POST" to the <form>
-    - Netlify Forms — add data-netlify="true" to the <form> if you deploy to Netlify
-    - A simple mailto: fallback (less reliable, but zero setup)
+  NOTE FOR ALEX: This form doesn't submit anywhere yet. Since this site is hosted on Cloudflare
+  Pages, a couple of simple options:
+    - Formspree (https://formspree.io) — host-agnostic, works with any static site. Add
+      action="https://formspree.io/f/yourFormId" method="POST" to the <form> above.
+    - A Cloudflare Pages Function (functions/api/contact.ts) that sends the submission to your
+      email via an API like Resend or SendGrid — more setup, but keeps everything on Cloudflare.
   Let me know which you'd prefer and I can wire it up.
 -->

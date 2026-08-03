@@ -1,21 +1,31 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { site, practiceAreas } from "../../data/site";
+import CtaBanner from "../../components/CtaBanner.astro";
+import { practiceAreas } from "../../data/site";
 ---
 
 <BaseLayout
-  title="Practice Areas"
-  description={`Estate planning services offered by ${site.firmName}, including wills, trusts, and powers of attorney.`}
+  title="Estate Planning Services in Wisconsin"
+  description="Estate planning services for Wisconsin families: revocable living trusts, wills, probate, trust administration, powers of attorney, and special needs planning."
 >
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Practice Areas</p>
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Estate Planning Services</p>
     <h1 class="font-display mt-3 max-w-2xl text-4xl font-semibold text-navy-900">
-      Estate planning built around your family and your future
+      Estate Planning Built Around Your Family, Not a Template
     </h1>
-    <p class="mt-4 max-w-2xl text-ink-700">
-      {site.firmName} focuses on the core documents every solid estate plan needs. Each one can
-      stand on its own or work together as part of a complete plan.
+    <p class="mt-4 max-w-2xl text-lg text-ink-700">
+      Every service below exists for one reason: to protect the people you love and make things
+      easier for them. Not sure where to start? A consultation will help you figure out exactly
+      what your family needs — no guesswork required.
     </p>
+    <div class="mt-6">
+      <a
+        href="/contact/"
+        class="inline-block rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Schedule Your Consultation
+      </a>
+    </div>
 
     <div class="mt-12 grid gap-6 md:grid-cols-3">
       {
@@ -30,6 +40,14 @@ import { site, practiceAreas } from "../../data/site";
           </a>
         ))
       }
+    </div>
+
+    <div class="mt-16">
+      <CtaBanner
+        heading="Not Sure Which Service You Need?"
+        subtext="That's exactly what a consultation is for. We'll talk through your family and goals, and recommend the right plan — no pressure, no obligation."
+        primaryLabel="Start Your Estate Plan"
+      />
     </div>
   </section>
 </BaseLayout>

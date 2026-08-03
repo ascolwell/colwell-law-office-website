@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
 import { site } from "../../data/site";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
@@ -14,12 +15,16 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 ---
 
-<BaseLayout title="Blog" description={`Articles and updates on estate planning from ${site.firmName}.`}>
+<BaseLayout
+  title="Wisconsin Estate Planning Blog"
+  description={`Plain-English articles on wills, living trusts, probate, and estate planning for Wisconsin families, from ${site.firmName}.`}
+>
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Blog</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Insights on Estate Planning</h1>
     <p class="mt-4 text-ink-700">
-      Practical thoughts on wills, trusts, and planning for your family's future.
+      Practical, plain-English thoughts on wills, trusts, and planning for your family's future —
+      no jargon required.
     </p>
 
     <div class="mt-12 space-y-8">
@@ -43,6 +48,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
           <p class="text-ink-500">No posts yet — check back soon.</p>
         )
       }
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Have a Question a Blog Post Can't Answer?"
+        subtext="Skip the search and get a straight answer. Schedule a free, no-pressure consultation."
+      />
     </div>
   </section>
 </BaseLayout>

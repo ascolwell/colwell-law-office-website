@@ -12,7 +12,7 @@
   --color-navy-100: #dfe6f2;
   --color-navy-50: #f1f4fa;
 
-  --color-gold-700: #94722c;
+  --color-gold-700: #7a5b1f;
   --color-gold-600: #b28d42;
   --color-gold-500: #c6a15b;
   --color-gold-400: #d6bb7e;
@@ -34,6 +34,32 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink-900);
   background-color: var(--color-cream-100);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-gold-600);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  background: var(--color-navy-900);
+  color: var(--color-cream-100);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: top 0.15s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 h1, h2, h3, h4, .font-display {

@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+import { site } from "../../data/site";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -23,12 +25,21 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="mx-auto max-w-3xl px-6 py-16 md:py-20">
     <a href="/blog/" class="text-sm font-semibold text-gold-700 hover:text-gold-600">&larr; All Posts</a>
-    <time datetime={post.data.pubDate.toISOString()} class="mt-6 block text-xs font-semibold tracking-wide text-gold-700 uppercase">
-      {dateFormatter.format(post.data.pubDate)}
-    </time>
+    <div class="mt-6 flex items-center gap-3 text-xs font-semibold tracking-wide text-gold-700 uppercase">
+      <time datetime={post.data.pubDate.toISOString()}>{dateFormatter.format(post.data.pubDate)}</time>
+      <span aria-hidden="true">&middot;</span>
+      <span>{site.attorneyName}</span>
+    </div>
     <h1 class="font-display mt-2 text-4xl font-semibold text-navy-900">{post.data.title}</h1>
     <div class="prose-legal mt-8 text-ink-700">
       <Content />
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Ready to Put a Plan in Place?"
+        subtext="Schedule a free, no-pressure consultation and get answers specific to your family."
+      />
     </div>
   </article>
 </BaseLayout>

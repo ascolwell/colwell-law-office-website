@@ -1,18 +1,21 @@
 ---
 import { Image } from "astro:assets";
-import { site } from "../data/site";
+import { site, practiceAreas } from "../data/site";
 import logo from "../assets/logo.png";
 
-const navLinks = [
-  { href: "/about/", label: "About" },
-  { href: "/practice-areas/", label: "Practice Areas" },
+const currentPath = Astro.url.pathname;
+
+const resourceLinks = [
+  { href: "/resources/living-trust-vs-will/", label: "Living Trust vs. Will" },
+  { href: "/resources/probate-costs-wisconsin/", label: "Probate Costs in Wisconsin" },
+  { href: "/resources/estate-planning-checklist/", label: "Estate Planning Checklist" },
+  { href: "/resources/what-happens-without-a-plan/", label: "What Happens Without a Plan" },
   { href: "/blog/", label: "Blog" },
   { href: "/faq/", label: "FAQ" },
-  { href: "/contact/", label: "Contact" },
 ];
-
-const currentPath = Astro.url.pathname;
 ---
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="sticky top-0 z-50 border-b border-navy-900/10 bg-cream-100/95 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
@@ -24,45 +27,103 @@ const currentPath = Astro.url.pathname;
       </span>
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex">
-      {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "text-sm font-medium tracking-wide transition-colors hover:text-gold-700",
-              currentPath === link.href ? "text-gold-700" : "text-navy-800",
-            ]}
-          >
-            {link.label}
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
+      <details class="group relative">
+        <summary class="flex cursor-pointer list-none items-center gap-1 text-sm font-medium tracking-wide text-navy-800 transition-colors hover:text-gold-700 [&::-webkit-details-marker]:hidden">
+          Services
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="absolute left-0 mt-2 w-72 rounded-sm border border-navy-900/10 bg-cream-100 p-2 shadow-lg">
+          {
+            practiceAreas.map((area) => (
+              <a href={`/practice-areas/${area.slug}/`} class="block rounded-sm px-3 py-2 text-sm text-navy-800 hover:bg-navy-900/5">
+                {area.name}
+              </a>
+            ))
+          }
+          <a href="/practice-areas/" class="mt-1 block rounded-sm border-t border-navy-900/10 px-3 pt-3 pb-1 text-sm font-semibold text-gold-700 hover:text-gold-600">
+            View All Services &rarr;
           </a>
-        ))
-      }
+        </div>
+      </details>
+
       <a
-        href={site.phoneHref}
+        href="/why-choose-us/"
+        class:list={["text-sm font-medium tracking-wide transition-colors hover:text-gold-700", currentPath === "/why-choose-us/" ? "text-gold-700" : "text-navy-800"]}
+      >
+        Why Choose Us
+      </a>
+
+      <details class="group relative">
+        <summary class="flex cursor-pointer list-none items-center gap-1 text-sm font-medium tracking-wide text-navy-800 transition-colors hover:text-gold-700 [&::-webkit-details-marker]:hidden">
+          Resources
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="absolute left-0 mt-2 w-72 rounded-sm border border-navy-900/10 bg-cream-100 p-2 shadow-lg">
+          {
+            resourceLinks.map((link) => (
+              <a href={link.href} class="block rounded-sm px-3 py-2 text-sm text-navy-800 hover:bg-navy-900/5">
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </details>
+
+      <a
+        href="/about/"
+        class:list={["text-sm font-medium tracking-wide transition-colors hover:text-gold-700", currentPath === "/about/" ? "text-gold-700" : "text-navy-800"]}
+      >
+        About
+      </a>
+
+      <a href={site.phoneHref} class="text-sm font-medium tracking-wide text-navy-800 hover:text-gold-700">
+        {site.phone}
+      </a>
+      <a
+        href="/contact/"
         class="rounded-sm bg-navy-900 px-5 py-2.5 text-sm font-semibold text-cream-100 transition-colors hover:bg-navy-700"
       >
-        Call {site.phone}
+        Schedule Your Consultation
       </a>
     </nav>
 
-    <details class="relative md:hidden">
+    <details class="relative lg:hidden">
       <summary class="list-none rounded-sm border border-navy-900/20 p-2 text-navy-900 [&::-webkit-details-marker]:hidden">
         <span class="sr-only">Open menu</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
         </svg>
       </summary>
-      <nav class="absolute right-0 mt-2 flex w-48 flex-col gap-1 rounded-sm border border-navy-900/10 bg-cream-100 p-3 shadow-lg">
+      <nav
+        aria-label="Primary"
+        class="absolute right-0 mt-2 flex max-h-[75vh] w-72 flex-col gap-1 overflow-y-auto rounded-sm border border-navy-900/10 bg-cream-100 p-3 shadow-lg"
+      >
+        <p class="px-3 pt-1 text-xs font-semibold tracking-wide text-ink-500 uppercase">Services</p>
         {
-          navLinks.map((link) => (
+          practiceAreas.map((area) => (
+            <a href={`/practice-areas/${area.slug}/`} class="rounded-sm px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-900/5">
+              {area.name}
+            </a>
+          ))
+        }
+        <a href="/why-choose-us/" class="mt-2 rounded-sm px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-900/5">
+          Why Choose Us
+        </a>
+        <p class="px-3 pt-2 text-xs font-semibold tracking-wide text-ink-500 uppercase">Resources</p>
+        {
+          resourceLinks.map((link) => (
             <a href={link.href} class="rounded-sm px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-900/5">
               {link.label}
             </a>
           ))
         }
-        <a href={site.phoneHref} class="mt-1 rounded-sm bg-navy-900 px-3 py-2 text-center text-sm font-semibold text-cream-100">
+        <a href="/about/" class="mt-2 rounded-sm px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-900/5">About</a>
+        <a href={site.phoneHref} class="rounded-sm px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-900/5">
           Call {site.phone}
+        </a>
+        <a href="/contact/" class="mt-1 rounded-sm bg-navy-900 px-3 py-2 text-center text-sm font-semibold text-cream-100">
+          Schedule Your Consultation
         </a>
       </nav>
     </details>
