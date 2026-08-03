@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+
+  --color-navy-950: #0d1526;
+  --color-navy-900: #101d33;
+  --color-navy-800: #16274a;
+  --color-navy-700: #1e3562;
+  --color-navy-600: #2a4680;
+  --color-navy-100: #dfe6f2;
+  --color-navy-50: #f1f4fa;
+
+  --color-gold-700: #94722c;
+  --color-gold-600: #b28d42;
+  --color-gold-500: #c6a15b;
+  --color-gold-400: #d6bb7e;
+  --color-gold-100: #f4ead2;
+
+  --color-cream-100: #faf7f0;
+  --color-cream-200: #f3ede0;
+
+  --color-ink-900: #1f2229;
+  --color-ink-700: #40444d;
+  --color-ink-500: #666b76;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-900);
+  background-color: var(--color-cream-100);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-serif);
+}
+
+.prose-legal :is(h2, h3) {
+  font-family: var(--font-serif);
+  color: var(--color-navy-900);
+  font-weight: 600;
+  margin-top: 1.75em;
+}
+
+.prose-legal h2 {
+  font-size: 1.5rem;
+}
+
+.prose-legal h3 {
+  font-size: 1.25rem;
+}
+
+.prose-legal p {
+  margin-top: 1em;
+  line-height: 1.75;
+}
+
+.prose-legal ul {
+  list-style: disc;
+  padding-left: 1.5em;
+  margin-top: 1em;
+}
+
+.prose-legal li + li {
+  margin-top: 0.4em;
+}

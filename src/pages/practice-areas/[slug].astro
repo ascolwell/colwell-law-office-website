@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site, practiceAreas } from "../../data/site";
+
+export function getStaticPaths() {
+  return practiceAreas.map((area) => ({
+    params: { slug: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+const otherAreas = practiceAreas.filter((a) => a.slug !== area.slug);
+---
+
+<BaseLayout title={area.name} description={area.description}>
+  <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
+    <a href="/practice-areas/" class="text-sm font-semibold text-gold-700 hover:text-gold-600">&larr; All Practice Areas</a>
+    <p class="mt-6 text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Practice Area</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">{area.name}</h1>
+    <p class="prose-legal mt-6 max-w-2xl text-lg text-ink-700">{area.description}</p>
+
+    <div class="mt-12 rounded-sm bg-navy-900 px-8 py-10 text-cream-100">
+      <h2 class="font-display text-2xl font-semibold">Talk to {site.attorneyName} about your {area.name.toLowerCase()}</h2>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href={site.phoneHref} class="rounded-sm bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-400">
+          Call {site.phone}
+        </a>
+        <a href="/contact/" class="rounded-sm border border-cream-100/30 px-6 py-3 text-sm font-semibold text-cream-100 hover:border-cream-100/60">
+          Send a Message
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <h2 class="font-display text-xl font-semibold text-navy-900">Other Practice Areas</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        {
+          otherAreas.map((other) => (
+            <a
+              href={`/practice-areas/${other.slug}/`}
+              class="rounded-sm border border-navy-900/10 bg-cream-200 p-5 hover:shadow-md"
+            >
+              <span class="font-display font-semibold text-navy-900">{other.name}</span>
+              <p class="mt-1 text-sm text-ink-700">{other.short}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="280" height="280">
+  <rect width="280" height="280" fill="#dfe6f2" />
+  <circle cx="140" cy="108" r="52" fill="#a9b8d6" />
+  <path d="M40 260c0-60 44-96 100-96s100 36 100 96" fill="#a9b8d6" />
+  <text x="140" y="255" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#40444d">Headshot coming soon</text>
+</svg>
