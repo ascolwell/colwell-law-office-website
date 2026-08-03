@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
+import headshot from "../assets/alexander-colwell-headshot.jpg";
 ---
 
 <BaseLayout
@@ -13,11 +15,11 @@ import { site } from "../data/site";
 
     <div class="mt-10 grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
       <div>
-        <img
-          src="/images/attorney-placeholder.svg"
+        <Image
+          src={headshot}
           alt={`Portrait of ${site.attorneyFirstLast}`}
-          width="280"
-          height="280"
+          width={560}
+          height={560}
           class="aspect-square w-full rounded-sm border border-navy-900/10 object-cover shadow-sm"
         />
         <div class="mt-6 rounded-sm border border-navy-900/10 bg-cream-200 p-5">

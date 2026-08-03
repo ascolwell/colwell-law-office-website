@@ -20,22 +20,22 @@ npm run preview  # serve the built dist/ folder locally to double check it
 
 ## What still needs your input
 
-1. **Logo** — drop your real logo file at `public/images/logo.svg` (or update the `<img>` `src`
-   in `src/components/Header.astro`, `src/components/Footer.astro`, and `src/pages/index.astro`
-   if you'd rather use a `.png`). A simple placeholder monogram is there now.
-2. **Headshot** — drop your photo at `public/images/attorney-placeholder.svg`'s path, or update
-   the `src` in `src/pages/about.astro` to point at your real image file.
-3. **Office address** — update `address` in `src/data/site.ts`.
-4. **Blog posts** — add each real post as a new markdown file in `src/content/blog/`, following
+1. **Office address** — update `address` in `src/data/site.ts` (currently a placeholder).
+2. **Blog posts** — add each real post as a new markdown file in `src/content/blog/`, following
    the frontmatter format in `placeholder-welcome-post.md`, then delete that placeholder file.
-5. **FAQ** — add each real question as a new markdown file in `src/content/faq/`, following the
+3. **FAQ** — add each real question as a new markdown file in `src/content/faq/`, following the
    frontmatter format in the existing two placeholder files, then delete or replace them.
-6. **Contact form** — `src/pages/contact.astro` has a styled form, but it isn't wired to actually
+4. **Contact form** — `src/pages/contact.astro` has a styled form, but it isn't wired to actually
    send anything yet (this is a static site, so it needs a form backend). Easiest options:
    [Formspree](https://formspree.io) or, if you host on Netlify, built-in Netlify Forms. There's a
    comment at the bottom of that file with the exact change needed either way.
-7. **About page bio details** — `src/pages/about.astro` has a starting bio; send over any details
+5. **About page bio details** — `src/pages/about.astro` has a starting bio; send over any details
    you want added (school, admissions, bar memberships, prior experience).
+
+The logo (`src/assets/logo.png`) and headshot (`src/assets/alexander-colwell-headshot.jpg`) are
+already wired in — they're processed through Astro's built-in image optimizer (`astro:assets`),
+which automatically generates appropriately sized/compressed versions at build time. To swap
+either image later, just replace the file at that path with the same filename.
 
 ## Project structure
 
@@ -47,6 +47,7 @@ src/
   pages/             one file per route (index, about, contact, practice-areas/, blog/, faq/)
   content/blog/      one markdown file per blog post
   content/faq/       one markdown file per FAQ entry
+  assets/            logo.png, attorney headshot (optimized automatically by astro:assets)
   styles/global.css  color palette & typography (Tailwind v4)
 ```
 

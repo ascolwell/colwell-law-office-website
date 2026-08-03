@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { site } from "../data/site";
+import logo from "../assets/logo.png";
 
 const navLinks = [
   { href: "/about/", label: "About" },
@@ -15,13 +17,7 @@ const currentPath = Astro.url.pathname;
 <header class="sticky top-0 z-50 border-b border-navy-900/10 bg-cream-100/95 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
     <a href="/" class="flex items-center gap-3 text-navy-900">
-      <img
-        src="/images/logo.svg"
-        alt={`${site.firmName} logo`}
-        width="52"
-        height="52"
-        class="h-12 w-12 shrink-0"
-      />
+      <Image src={logo} alt={`${site.firmName} logo`} width={52} height={52} class="h-12 w-12 shrink-0" />
       <span class="flex flex-col leading-tight">
         <span class="font-display text-lg font-semibold tracking-tight">{site.firmName}</span>
         <span class="text-xs tracking-[0.15em] text-gold-700 uppercase">{site.tagline}</span>

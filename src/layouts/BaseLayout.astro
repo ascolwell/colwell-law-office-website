@@ -1,7 +1,9 @@
 ---
+import { getImage } from "astro:assets";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { site } from "../data/site";
+import logo from "../assets/logo.png";
 import "../styles/global.css";
 
 interface Props {
@@ -11,6 +13,7 @@ interface Props {
 
 const { title, description } = Astro.props;
 const pageTitle = `${title} | ${site.firmName}`;
+const favicon = await getImage({ src: logo, width: 64, height: 64, format: "png" });
 ---
 
 <!doctype html>
@@ -18,7 +21,7 @@ const pageTitle = `${title} | ${site.firmName}`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href={favicon.src} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
