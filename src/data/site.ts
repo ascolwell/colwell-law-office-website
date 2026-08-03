@@ -13,6 +13,7 @@ export const site = {
     "We meet the way that works best for you — by video call, over the phone, at your home, or at a mutually convenient location. There's no office to drive to unless you'd like one.",
   hours: "Monday – Friday, 9:00 AM – 5:00 PM (evenings and weekends by appointment)",
   barAdmittedYear: 2017,
+  startingPriceFullPlan: "$3,000",
 } as const;
 
 // Computed at build time, so this stays accurate without manual updates each year.
@@ -57,7 +58,7 @@ export const trustBuilders = [
   },
   {
     title: "Flat-fee pricing",
-    detail: "You'll know your cost upfront before any work begins — no surprise hourly billing.",
+    detail: `Full trust-based estate plans start at ${site.startingPriceFullPlan}, quoted upfront — no surprise hourly billing.`,
   },
   {
     title: "Direct attorney access",
@@ -110,11 +111,16 @@ export const practiceAreas: PracticeArea[] = [
       "Clear instructions for your care if you're ever unable to speak for yourself",
       "Someone you trust is legally empowered to step in immediately if needed",
       "Built to reflect Wisconsin law, not a generic national template",
+      `Flat-fee pricing — full trust-based plans start at ${site.startingPriceFullPlan}, quoted upfront`,
     ],
     faqs: [
       {
         q: "What's actually included in a complete estate plan?",
         a: "Most complete plans include a revocable living trust, a pour-over will, a financial power of attorney, and a healthcare power of attorney (with a living will). Depending on your situation, we may also add a special needs trust or additional planning for specific assets.",
+      },
+      {
+        q: "How much does a full estate plan cost?",
+        a: `Full, complete trust-based estate plans start at ${site.startingPriceFullPlan}, quoted as a flat fee before any work begins — so there are no surprises. Your exact quote depends on your specific assets and goals, and you'll get a clear number during your free consultation.`,
       },
       {
         q: "How is this different from just getting a will?",
@@ -148,8 +154,13 @@ export const practiceAreas: PracticeArea[] = [
       "Makes things faster and simpler for your family when it matters most",
       "Stays fully in your control — revocable means you can change it anytime",
       "Helps protect you and your family if you become incapacitated, not just when you pass away",
+      `Flat-fee pricing — full trust-based plans start at ${site.startingPriceFullPlan}, quoted upfront`,
     ],
     faqs: [
+      {
+        q: "How much does a revocable living trust cost?",
+        a: `Full, complete trust-based estate plans start at ${site.startingPriceFullPlan}, as a flat fee quoted upfront — never surprise hourly billing. Your exact quote depends on your assets and goals, and you'll get a clear number during your free consultation.`,
+      },
       {
         q: "What's the difference between a revocable and irrevocable trust?",
         a: "A revocable living trust can be changed or canceled by you at any time while you're alive and competent — most estate plans use this type. An irrevocable trust generally can't be changed once created, and is used for more specific goals like asset protection or certain tax or benefits planning.",
