@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import TrustBar from "../components/TrustBar.astro";
+import Testimonials from "../components/Testimonials.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import { site, practiceAreas } from "../data/site";
 import logo from "../assets/logo.png";
@@ -179,6 +180,17 @@ const homeFaqs = [
   </section>
 
   <section class="mx-auto max-w-6xl px-6 py-16">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Client Experiences</p>
+    <h2 class="font-display mt-2 text-3xl font-semibold text-navy-900">What Wisconsin Families Say</h2>
+    <div class="mt-8">
+      <Testimonials limit={3} />
+    </div>
+    <a href="/why-choose-us/#testimonials" class="mt-6 inline-block text-sm font-semibold text-gold-700 hover:text-gold-600">
+      Read more client experiences &rarr;
+    </a>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-16">
     <CtaBanner
       heading="Ready to Protect Your Family?"
       subtext="Schedule a free, no-pressure consultation and find out exactly what a plan built around your family would look like."

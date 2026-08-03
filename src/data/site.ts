@@ -14,6 +14,38 @@ export const site = {
   hours: "Monday – Friday, 9:00 AM – 5:00 PM (evenings and weekends by appointment)",
 } as const;
 
+export const testimonials = [
+  {
+    quote:
+      "After 40 years of practice as an attorney, I retired. A major part of my practice was estate planning, wills trusts, etc. I had a rather complicated trust issue and with law and tax changes in the 27 years away from the practice, I needed help. I came to know Alex Colwell, an accountant turned lawyer, whose only legal work was estate planning. I was so amazed at his knowledge of trusts, wills, etc. So, I hired him. What a great experience. He is not only a great lawyer in this field, but a great person to deal with. He would come to our home and go over what we needed, how to solve the issues, suggest alternatives to reach our goal etc. As this progressed, he would happily accept phone calls and emails to answer our many questions. And would then bring the instruments over, go over them in detail, and then have us sign them. And compared to so many attorneys, he charges very reasonable fees. I can't recommend him enough.",
+    author: "C.W.",
+  },
+  {
+    quote:
+      "My wife and I are setting up our end of life paperwork, and after contacting The Colwell Law Office it is a lot easier than we thought. Mr. Colwell is very well informed on procedures and actions to make you think about a lot of things pertaining to items and actions to make your wishes, and hopes, for your people involved with you and that you love, to be as great and fulfilled as you intend.",
+    author: "P.C.",
+  },
+  {
+    quote:
+      "Very positive and knowledgeable experience. We were looking to set up a trust and asked a personal friend and attorney who he would recommend. He highly recommended Colwell Law Office who he had used. Our meeting couldn't have been better. He explained the differences using a trust over a last will and testament, which we had done many years ago. Long story short he explained the differences and advantages and we set up our trust. He was very detail oriented and made the transition both knowledgeable and easy to accomplish. We would highly recommend him and certainly feel it was a move that would protect our estate and children.",
+    author: "C.W.",
+  },
+  {
+    quote:
+      "Alex was wonderful to work with... Knowledgeable, professional and was able to explain things in a way I could understand. I would recommend him to anyone seeking assistance with trusts, power of attorney, and will planning.",
+    author: "P.W.",
+  },
+  {
+    quote: "Alex was so helpful! We feel he did an excellent job! We recommend him very strongly! Thank you Alex!",
+    author: "L.L.",
+  },
+  {
+    quote:
+      "Alex Colwell worked with my husband and I assisting to settle my brother's estate. He was kind and compassionate. He came to the hospice house for our meetings saving us time and effort to travel elsewhere to meet. He was available all hours. He took an important document to the courthouse for us an hour away rather than having us drive there when we wanted that time to spend with my brother. All needed documents were professionally prepared and notarized by Alex. We had lots of questions and Alex was patient in making sure our questions were answered. I highly recommend Alex.",
+    author: "C.M.",
+  },
+] as const;
+
 export const trustBuilders = [
   {
     title: "Personalized planning",
