@@ -9,9 +9,10 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const pageTitle = `${title} | ${site.firmName}`;
 const favicon = await getImage({ src: logo, width: 64, height: 64, format: "png" });
 const ogImage = await getImage({ src: logo, width: 630, height: 630, format: "png" });
@@ -50,6 +51,7 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />

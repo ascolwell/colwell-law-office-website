@@ -21,6 +21,12 @@ const faqs = [
     a: "Yes, when it makes sense — at your home or another convenient location anywhere in Wisconsin. Many clients prefer meeting by video or phone instead, and both options work equally well.",
   },
 ];
+
+const errorMessages = {
+  missing: "Please fill in your name, email, and message before submitting.",
+  send: "Something went wrong sending your message. Please try again, or call or email us directly.",
+  config: "This form isn't fully set up yet. Please call or email us directly in the meantime.",
+};
 ---
 
 <BaseLayout
@@ -59,11 +65,23 @@ const faqs = [
         </div>
       </div>
 
-      <form class="space-y-5 rounded-sm border border-navy-900/10 bg-cream-100 p-8 shadow-sm" data-contact-form>
+      <form
+        class="space-y-5 rounded-sm border border-navy-900/10 bg-cream-100 p-8 shadow-sm"
+        action="/api/contact"
+        method="POST"
+      >
         <p class="text-sm text-ink-700">
           Fill this out and we'll reach out to schedule your free consultation — usually within one
           business day.
         </p>
+
+        <p
+          id="contact-form-error"
+          role="alert"
+          hidden
+          class="rounded-sm border border-red-900/20 bg-red-50 px-4 py-3 text-sm text-red-900"
+        ></p>
+
         <div>
           <label for="name" class="block text-sm font-semibold text-navy-900">Name</label>
           <input
@@ -106,18 +124,31 @@ const faqs = [
             class="mt-2 w-full rounded-sm border border-navy-900/20 bg-cream-100 px-4 py-2.5 text-ink-900 focus:border-gold-600 focus:ring-1 focus:ring-gold-600 focus:outline-none"
           ></textarea>
         </div>
+
+        <div class="absolute left-[-9999px] h-px w-px overflow-hidden" aria-hidden="true">
+          <label for="company">Leave this field blank</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
         <button
           type="submit"
           class="w-full rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 transition-colors hover:bg-navy-700"
         >
           Schedule Your Consultation
         </button>
-        <p class="text-xs text-ink-500">
-          This form currently needs to be connected to an email or form-handling service before it
-          will actually deliver submissions — see the note left for you in this file.
-        </p>
       </form>
     </div>
+
+    <script is:inline define:vars={{ errorMessages }}>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("error");
+      if (code && errorMessages[code]) {
+        const el = document.getElementById("contact-form-error");
+        el.textContent = errorMessages[code];
+        el.hidden = false;
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    </script>
 
     <div class="mt-16 max-w-4xl">
       <h2 class="font-display text-2xl font-semibold text-navy-900">Before You Reach Out</h2>
@@ -127,13 +158,3 @@ const faqs = [
     </div>
   </section>
 </BaseLayout>
-
-<!--
-  NOTE FOR ALEX: This form doesn't submit anywhere yet. Since this site is hosted on Cloudflare
-  Pages, a couple of simple options:
-    - Formspree (https://formspree.io) — host-agnostic, works with any static site. Add
-      action="https://formspree.io/f/yourFormId" method="POST" to the <form> above.
-    - A Cloudflare Pages Function (functions/api/contact.ts) that sends the submission to your
-      email via an API like Resend or SendGrid — more setup, but keeps everything on Cloudflare.
-  Let me know which you'd prefer and I can wire it up.
--->

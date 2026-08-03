@@ -1,8 +1,9 @@
 # Colwell Law Office, LLC — Website
 
-Rebuilt with [Astro](https://astro.build) — a fast, static-first framework well suited to a
-marketing/brochure site like this one. No database, no server to maintain: `npm run build`
-produces plain HTML/CSS you can host almost anywhere.
+Built with [Astro](https://astro.build) — a fast, static-first framework well suited to a
+marketing/brochure site like this one — and deployed on Cloudflare Pages. The contact form is
+handled by a small Cloudflare Pages Function (see below), everything else is plain static
+HTML/CSS.
 
 ## Getting started
 
@@ -18,41 +19,74 @@ npm run build    # outputs the finished site to dist/
 npm run preview  # serve the built dist/ folder locally to double check it
 ```
 
+## Setting up the contact form (required, one-time)
+
+The form at `/contact/` posts to `/api/contact`, a Cloudflare Pages Function
+(`functions/api/contact.js`) that emails the submission to you via
+[Resend](https://resend.com) — a transactional email API with a generous free tier. Until this is
+configured, submissions will show a friendly "not fully set up yet" message instead of failing
+silently.
+
+**One-time setup, in the Cloudflare dashboard:**
+
+1. Create a free account at [resend.com](https://resend.com) and grab an API key.
+2. (Recommended) In Resend, verify `colwelllawoffice.com` as a sending domain — this improves
+   deliverability so your emails don't land in spam. Until then, it'll send from Resend's shared
+   `onboarding@resend.dev` address, which still works.
+3. In your Cloudflare Pages project → **Settings → Environment variables**, add:
+   - `RESEND_API_KEY` — the API key from step 1 (mark it as a "secret")
+   - `CONTACT_TO_EMAIL` — optional, defaults to `alex@colwelllawoffice.com`
+   - `CONTACT_FROM_EMAIL` — optional, e.g. `"Colwell Law Office Website <contact@colwelllawoffice.com>"`
+     once your domain is verified in step 2
+4. Redeploy (or trigger a new deployment) so the Function picks up the new variables.
+
+That's it — submissions will land in your inbox, with the visitor's email set as the reply-to
+address so you can just hit "reply."
+
+**Spam protection:** the form includes an invisible honeypot field — real visitors never see or
+fill it, but simple bots that auto-fill every field will trip it, and their submission is silently
+discarded. If spam becomes a problem despite that, adding
+[Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/) (Cloudflare's free CAPTCHA
+alternative) to the form would be the next step.
+
+**Testing locally:** `npm run dev` / `npm run preview` do *not* run Pages Functions. To test the
+actual function locally: `npm run build && npx wrangler pages dev ./dist`, optionally with
+`--binding RESEND_API_KEY=your_key_here` to test a real send.
+
 ## What still needs your input
 
-1. **Office address** — update `address` in `src/data/site.ts` (currently a placeholder).
-2. **Blog posts** — add each real post as a new markdown file in `src/content/blog/`, following
-   the frontmatter format in `placeholder-welcome-post.md`, then delete that placeholder file.
-3. **FAQ** — add each real question as a new markdown file in `src/content/faq/`, following the
-   frontmatter format in the existing two placeholder files, then delete or replace them.
-4. **Contact form** — `src/pages/contact.astro` has a styled form, but it isn't wired to actually
-   send anything yet (this is a static site, so it needs a form backend). Easiest options:
-   [Formspree](https://formspree.io) or, if you host on Netlify, built-in Netlify Forms. There's a
-   comment at the bottom of that file with the exact change needed either way.
-5. **About page bio details** — `src/pages/about.astro` has a starting bio; send over any details
-   you want added (school, admissions, bar memberships, prior experience).
+1. **Blog post dates** — the migrated posts in `src/content/blog/` were given placeholder
+   `pubDate` values (spaced out, all before today) since the original publish dates weren't
+   provided. Let me know the real dates if you'd like them corrected.
+2. **About page bio details** — `src/pages/about.astro` has a starting bio; send over any details
+   you want added (law school, bar admissions, community involvement, etc.).
+
+Everything else requested so far — the office address removed in favor of "serving Wisconsin
+virtually," years of experience, real client testimonials, flat-fee pricing, and 5 migrated blog
+posts — is already wired in.
 
 The logo (`src/assets/logo.png`) and headshot (`src/assets/alexander-colwell-headshot.jpg`) are
-already wired in — they're processed through Astro's built-in image optimizer (`astro:assets`),
-which automatically generates appropriately sized/compressed versions at build time. To swap
-either image later, just replace the file at that path with the same filename.
+processed through Astro's built-in image optimizer (`astro:assets`), which automatically generates
+appropriately sized/compressed versions at build time. To swap either image later, just replace
+the file at that path with the same filename.
 
 ## Project structure
 
 ```
 src/
-  components/       Header, Footer
-  data/site.ts       firm name, contact info, practice area copy — single source of truth
-  layouts/           shared page shell (fonts, meta tags)
-  pages/             one file per route (index, about, contact, practice-areas/, blog/, faq/)
-  content/blog/      one markdown file per blog post
-  content/faq/       one markdown file per FAQ entry
-  assets/            logo.png, attorney headshot (optimized automatically by astro:assets)
-  styles/global.css  color palette & typography (Tailwind v4)
+  components/         Header, Footer, CtaBanner, TrustBar, Testimonials, FaqAccordion
+  data/site.ts         firm info, pricing, trust builders, testimonials, practice areas — single source of truth
+  layouts/             shared page shell (fonts, meta tags, JSON-LD)
+  pages/               one file per route (index, about, contact, practice-areas/, resources/, blog/, faq/)
+  content/blog/        one markdown file per blog post
+  content/faq/         one markdown file per FAQ entry
+  assets/              logo.png, attorney headshot (optimized automatically by astro:assets)
+  styles/global.css    color palette & typography (Tailwind v4)
+functions/api/contact.js   Cloudflare Pages Function that emails contact form submissions
 ```
 
 ## Deploying
 
-The `npm run build` command outputs a fully static site to `dist/`. That folder can be hosted on
-any static host — Netlify, Vercel, Cloudflare Pages, GitHub Pages, or traditional web hosting via
-FTP/cPanel. Let me know which host you'd like to use and I can wire up the specific deploy config.
+`npm run build` outputs a fully static site to `dist/`, deployed to Cloudflare Pages. Cloudflare
+automatically picks up the `functions/` directory alongside the static build for the contact form
+endpoint — no extra configuration needed beyond the environment variables above.

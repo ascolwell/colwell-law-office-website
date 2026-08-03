@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# local Cloudflare Pages Functions dev state (wrangler pages dev)
+.wrangler/
+
 # dependencies
 node_modules/
 

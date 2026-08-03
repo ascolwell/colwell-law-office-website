@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
+---
+
+<BaseLayout
+  title="Thank You"
+  description="Thank you for reaching out to Colwell Law Office. We'll be in touch soon."
+  noindex
+>
+  <section class="mx-auto max-w-2xl px-6 py-20 text-center md:py-28">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Message Sent</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Thank You — We'll Be In Touch Soon</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      Your message has been received. {site.attorneyFirst} typically responds within one business
+      day. If your question is urgent, feel free to call directly in the meantime.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        href={site.phoneHref}
+        class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Call {site.phone}
+      </a>
+      <a
+        href="/"
+        class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60"
+      >
+        Back to Home
+      </a>
+    </div>
+  </section>
+</BaseLayout>
