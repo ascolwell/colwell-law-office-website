@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaBanner from "../components/CtaBanner.astro";
-import { site } from "../data/site";
+import { site, yearsPracticing } from "../data/site";
 import headshot from "../assets/alexander-colwell-headshot.jpg";
 ---
 
@@ -56,7 +56,9 @@ import headshot from "../assets/alexander-colwell-headshot.jpg";
 
         <h2>An attorney who also thinks like a CPA</h2>
         <p>
-          What sets Alexander apart is a background that combines legal training with a
+          Alexander passed the Wisconsin bar in 2017 and spent about two and a half years working
+          in public accounting before deciding to focus his legal practice exclusively on estate
+          planning. What sets him apart is that combination: legal training paired with a
           Certified Public Accountant's eye for the financial details. Estate plans don't just
           need to be legally valid — they need to make sense with your taxes, your accounts, and
           how your assets are actually titled. That combination catches issues that a purely
@@ -78,7 +80,7 @@ import headshot from "../assets/alexander-colwell-headshot.jpg";
 
         <h2>Credentials</h2>
         <ul>
-          <li>Licensed Wisconsin Attorney (Esq.)</li>
+          <li>Licensed Wisconsin Attorney since {site.barAdmittedYear} ({yearsPracticing}+ years of experience)</li>
           <li>Certified Public Accountant (CPA)</li>
           <li>Focused on wills, revocable living trusts, probate, trust administration, powers of attorney, and special needs planning</li>
         </ul>

@@ -12,7 +12,11 @@ export const site = {
   meetingOptions:
     "We meet the way that works best for you — by video call, over the phone, at your home, or at a mutually convenient location. There's no office to drive to unless you'd like one.",
   hours: "Monday – Friday, 9:00 AM – 5:00 PM (evenings and weekends by appointment)",
+  barAdmittedYear: 2017,
 } as const;
+
+// Computed at build time, so this stays accurate without manual updates each year.
+export const yearsPracticing = new Date().getFullYear() - site.barAdmittedYear;
 
 export const testimonials = [
   {

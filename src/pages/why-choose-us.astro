@@ -4,7 +4,7 @@ import CtaBanner from "../components/CtaBanner.astro";
 import TrustBar from "../components/TrustBar.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { site } from "../data/site";
+import { site, yearsPracticing } from "../data/site";
 
 const comparison = [
   { theirs: "Billed by the hour, with surprise fees", ours: "Flat-fee pricing, quoted upfront" },
@@ -89,10 +89,10 @@ const faqs = [
       <div>
         <h2 class="font-display text-2xl font-semibold text-navy-900">An Attorney Who Also Thinks Like a CPA</h2>
         <p class="mt-3 max-w-2xl text-ink-700">
-          {site.attorneyName} combines a law license with a Certified Public Accountant's eye for
-          the financial details — so your plan holds up legally and makes sense with your taxes
-          and accounts. It's a rare combination, and it means fewer surprises for your family
-          later.
+          {site.attorneyName} has practiced Wisconsin law since {site.barAdmittedYear} —
+          {yearsPracticing}+ years — and combines that legal license with a Certified Public
+          Accountant's eye for the financial details. It's a rare combination, and it means fewer
+          surprises for your family later.
         </p>
         <a href="/about/" class="mt-4 inline-block text-sm font-semibold text-gold-700 hover:text-gold-600">
           Meet {site.attorneyFirst} &rarr;

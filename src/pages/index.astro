@@ -5,7 +5,7 @@ import CtaBanner from "../components/CtaBanner.astro";
 import TrustBar from "../components/TrustBar.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { site, practiceAreas } from "../data/site";
+import { site, practiceAreas, yearsPracticing } from "../data/site";
 import logo from "../assets/logo.png";
 
 const homeFaqs = [
@@ -84,8 +84,9 @@ const homeFaqs = [
         <p class="text-xs font-semibold tracking-[0.15em] text-gold-700 uppercase">Can you trust us?</p>
         <h2 class="font-display mt-2 text-lg font-semibold text-navy-900">An attorney and a CPA</h2>
         <p class="mt-3 text-sm text-ink-700">
-          {site.attorneyName} brings both legal and financial training to your plan — so it's not
-          just legally sound, but built around how your assets and taxes actually work. Wisconsin
+          {site.attorneyName} has practiced Wisconsin law since {site.barAdmittedYear} ({yearsPracticing}+
+          years), bringing both legal and financial training to your plan — so it's not just
+          legally sound, but built around how your assets and taxes actually work. Wisconsin
           focused. Direct communication. No jargon.
         </p>
       </div>
