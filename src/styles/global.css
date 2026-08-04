@@ -95,3 +95,61 @@ h1, h2, h3, h4, .font-display {
 .prose-legal li + li {
   margin-top: 0.4em;
 }
+
+.prose-legal table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5em;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+}
+
+.prose-legal th,
+.prose-legal td {
+  border: 1px solid rgba(16, 29, 51, 0.12);
+  padding: 0.65em 1em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-legal thead th {
+  background: var(--color-navy-900);
+  color: var(--color-cream-100);
+  font-family: var(--font-serif);
+  white-space: nowrap;
+}
+
+.prose-legal tbody tr:nth-child(even) {
+  background: var(--color-cream-200);
+}
+
+.prose-legal blockquote {
+  margin-top: 1em;
+  padding: 0.75em 1.25em;
+  border-left: 3px solid var(--color-gold-500);
+  background: var(--color-cream-200);
+  font-style: italic;
+  color: var(--color-ink-700);
+}
+
+.prose-legal blockquote p {
+  margin-top: 0;
+}
+
+.prose-legal hr {
+  margin-top: 2em;
+  border: none;
+  border-top: 1px solid rgba(16, 29, 51, 0.12);
+}
+
+.prose-legal a {
+  color: var(--color-gold-700);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-legal a:hover {
+  color: var(--color-gold-600);
+}
