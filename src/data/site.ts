@@ -4,7 +4,7 @@ export const site = {
   tagline: "Our Plan. Your Legacy.",
   attorneyName: "Alexander S. Colwell, Esq., CPA",
   attorneyFirstLast: "Alexander S. Colwell",
-  attorneyFirst: "Alexander",
+  attorneyFirst: "Alex",
   email: "alex@colwelllawoffice.com",
   phone: "715-390-0346",
   phoneHref: "tel:+17153900346",
@@ -62,7 +62,7 @@ export const trustBuilders = [
   },
   {
     title: "Direct attorney access",
-    detail: "You work with Alexander directly, not a rotating cast of paralegals.",
+    detail: "You work with Alex directly, not a rotating cast of paralegals.",
   },
   {
     title: "Compassionate guidance",
@@ -103,7 +103,7 @@ export const practiceAreas: PracticeArea[] = [
     short: "A complete plan — trust, will, and powers of attorney — built around your family.",
     intro: [
       "A full estate plan isn't about paperwork. It's about making sure the people who depend on you are protected, no matter what happens.",
-      "As your Wisconsin estate planning attorney, Alexander builds a complete plan around your specific family, assets, and wishes — typically a revocable living trust, pour-over will, financial power of attorney, and healthcare directive working together — so nothing is left to chance and no one is left guessing.",
+      "As your Wisconsin estate planning attorney, Alex builds a complete plan around your specific family, assets, and wishes — typically a revocable living trust, pour-over will, financial power of attorney, and healthcare directive working together — so nothing is left to chance and no one is left guessing.",
     ],
     benefits: [
       "One coordinated plan instead of disconnected documents",
@@ -189,7 +189,7 @@ export const practiceAreas: PracticeArea[] = [
     short: "Clear, legally sound wills that protect your family and your wishes.",
     intro: [
       "A will is where most estate plans start — and for some families, it's exactly what's needed. It lets you name who receives your property, and just as importantly, who will care for your minor children if the unthinkable happens.",
-      "Alexander will walk you through your options in plain English, help you think through decisions you may not have considered, and make sure your will actually reflects what you want — not just legal boilerplate.",
+      "Alex will walk you through your options in plain English, help you think through decisions you may not have considered, and make sure your will actually reflects what you want — not just legal boilerplate.",
     ],
     benefits: [
       "You decide exactly who receives your property — not the state of Wisconsin",
@@ -265,7 +265,7 @@ export const practiceAreas: PracticeArea[] = [
     short: "Compassionate, clear guidance through Wisconsin's probate process.",
     intro: [
       "Losing someone you love is hard enough without also trying to figure out Wisconsin's probate court process on your own.",
-      "Alexander guides families step by step through probate — handling the legal filings and deadlines so you can focus on your family, not on paperwork. If you're not sure whether probate is even necessary in your situation, that's one of the first things we'll help you figure out.",
+      "Alex guides families step by step through probate — handling the legal filings and deadlines so you can focus on your family, not on paperwork. If you're not sure whether probate is even necessary in your situation, that's one of the first things we'll help you figure out.",
     ],
     benefits: [
       "Clear explanations of exactly what needs to happen and when",
@@ -303,7 +303,7 @@ export const practiceAreas: PracticeArea[] = [
     short: "Clear guidance for trustees settling a loved one's trust.",
     intro: [
       "Being named a successor trustee is an honor — and often a responsibility no one fully prepares you for. There are legal duties, notices, tax considerations, and distributions to manage, usually while you're also grieving.",
-      "Alexander works directly with successor trustees to walk through each step correctly, so you can fulfill your duties confidently without feeling like you're on your own.",
+      "Alex works directly with successor trustees to walk through each step correctly, so you can fulfill your duties confidently without feeling like you're on your own.",
     ],
     benefits: [
       "Clear, step-by-step guidance instead of confusing legal instructions",
