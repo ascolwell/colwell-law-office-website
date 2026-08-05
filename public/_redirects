@@ -1,0 +1,8 @@
+# Redirects from the old site's indexed URLs to their new equivalents.
+# Cloudflare Pages reads this file natively; explicit 301s so search engines
+# update their index instead of treating these as soft-404/duplicate content.
+/blog-posts     /blog/       301
+/faqs           /faq/        301
+/contact-us     /contact/    301
+/make-a-payment /contact/    301
+/roles-guide    /faq/        301

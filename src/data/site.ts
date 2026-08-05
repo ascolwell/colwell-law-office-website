@@ -8,7 +8,7 @@ export const site = {
   email: "alex@colwelllawoffice.com",
   phone: "715-390-0346",
   phoneHref: "tel:+17153900346",
-  serviceArea: "Serving clients virtually throughout Wisconsin",
+  serviceArea: "Serving Marshfield, Stevens Point, and Wisconsin Rapids — plus virtual service throughout Wisconsin",
   meetingOptions:
     "We meet the way that works best for you — by video call, over the phone, at your home, or at a mutually convenient location. There's no office to drive to unless you'd like one.",
   hours: "Monday – Friday, 9:00 AM – 5:00 PM (evenings and weekends by appointment)",

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="This page couldn't be found."
+  noindex
+>
+  <section class="mx-auto max-w-2xl px-6 py-20 text-center md:py-28">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">404</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">We Couldn't Find That Page</h1>
+    <p class="mt-4 text-lg text-ink-700">
+      The page you're looking for may have moved or no longer exists. Here are a few places to
+      start instead.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        href="/"
+        class="rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Back to Home
+      </a>
+      <a
+        href="/contact/"
+        class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60"
+      >
+        Contact Us
+      </a>
+      <a href={site.phoneHref} class="rounded-sm border border-navy-900/30 px-6 py-3 text-sm font-semibold text-navy-900 hover:border-navy-900/60">
+        Call {site.phone}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

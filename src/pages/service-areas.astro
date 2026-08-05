@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import { site } from "../data/site";
+
+const cities = [
+  {
+    name: "Marshfield, WI",
+    blurb:
+      "Home base for Colwell Law Office. Meet in person nearby, or by video or phone — whichever is easiest for you.",
+  },
+  {
+    name: "Stevens Point, WI",
+    blurb:
+      "Wills, trusts, probate, and powers of attorney for Stevens Point families, handled virtually or in person.",
+  },
+  {
+    name: "Wisconsin Rapids, WI",
+    blurb:
+      "The same flat-fee, personal approach to estate planning, extended to families throughout Wisconsin Rapids.",
+  },
+];
+---
+
+<BaseLayout
+  title="Estate Planning Attorney Serving Marshfield, Stevens Point & Wisconsin Rapids, WI"
+  description="Colwell Law Office primarily serves Marshfield, Stevens Point, and Wisconsin Rapids, Wisconsin, with virtual estate planning service available statewide."
+>
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Service Areas</p>
+    <h1 class="font-display mt-3 max-w-2xl text-4xl font-semibold text-navy-900">
+      Proudly Serving Marshfield, Stevens Point &amp; Wisconsin Rapids
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg text-ink-700">
+      Marshfield, Stevens Point, and Wisconsin Rapids are our core service area — but they're not
+      the limit. {site.attorneyFirst} also meets with families virtually throughout Wisconsin, so
+      wherever you are in the state, getting a plan in place doesn't require a long drive.
+    </p>
+    <div class="mt-6">
+      <a
+        href="/contact/"
+        class="inline-block rounded-sm bg-navy-900 px-6 py-3 text-sm font-semibold text-cream-100 hover:bg-navy-700"
+      >
+        Schedule Your Consultation
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        cities.map((city) => (
+          <div class="rounded-sm border border-navy-900/10 bg-cream-200 p-7">
+            <h2 class="font-display text-lg font-semibold text-navy-900">{city.name}</h2>
+            <p class="mt-2 text-sm text-ink-700">{city.blurb}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 rounded-sm border border-navy-900/10 bg-cream-200 p-7">
+      <h2 class="font-display text-xl font-semibold text-navy-900">Not in Central Wisconsin? That's Fine, Too.</h2>
+      <p class="mt-2 text-ink-700">{site.meetingOptions}</p>
+    </div>
+
+    <div class="mt-14">
+      <CtaBanner
+        heading="Wherever You Are in Wisconsin, We Can Help"
+        subtext="Schedule a free, no-pressure consultation and find out how easy getting a plan in place can be."
+      />
+    </div>
+  </section>
+</BaseLayout>

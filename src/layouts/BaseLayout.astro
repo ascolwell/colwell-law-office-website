@@ -25,17 +25,19 @@ const jsonLd = {
   founder: site.attorneyName,
   telephone: site.phone,
   email: site.email,
-  areaServed: {
-    "@type": "State",
-    name: "Wisconsin",
-  },
+  areaServed: [
+    { "@type": "City", name: "Marshfield", containedInPlace: { "@type": "State", name: "Wisconsin" } },
+    { "@type": "City", name: "Stevens Point", containedInPlace: { "@type": "State", name: "Wisconsin" } },
+    { "@type": "City", name: "Wisconsin Rapids", containedInPlace: { "@type": "State", name: "Wisconsin" } },
+    { "@type": "State", name: "Wisconsin" },
+  ],
   address: {
     "@type": "PostalAddress",
     addressRegion: "WI",
     addressCountry: "US",
   },
   description:
-    "Wisconsin estate planning attorney helping families with revocable living trusts, wills, probate, trust administration, powers of attorney, and special needs planning. Meetings held virtually and throughout Wisconsin.",
+    "Wisconsin estate planning attorney helping families with revocable living trusts, wills, probate, trust administration, powers of attorney, and special needs planning. Primarily serving Marshfield, Stevens Point, and Wisconsin Rapids, with meetings held virtually throughout Wisconsin.",
   priceRange: "$$",
   url: canonicalURL.toString(),
 };
