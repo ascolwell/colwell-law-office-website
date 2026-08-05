@@ -5,7 +5,7 @@ import CtaBanner from "../components/CtaBanner.astro";
 import TrustBar from "../components/TrustBar.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { site, practiceAreas, yearsPracticing } from "../data/site";
+import { site, practiceAreas, yearsPracticing, faqPageJsonLd } from "../data/site";
 import logo from "../assets/logo.png";
 
 const homeFaqs = [
@@ -26,6 +26,8 @@ const homeFaqs = [
     a: "Not at all. We meet virtually, at your home, or at a mutually convenient location, anywhere in Wisconsin. Whatever's easiest for you.",
   },
 ];
+
+const homeFaqJsonLd = faqPageJsonLd(homeFaqs);
 ---
 
 <BaseLayout
@@ -199,6 +201,7 @@ const homeFaqs = [
   </section>
 
   <section class="mx-auto max-w-4xl px-6 pb-16">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(homeFaqJsonLd)} />
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Common Questions</p>
     <h2 class="font-display mt-2 text-3xl font-semibold text-navy-900">Frequently Asked Questions</h2>
     <div class="mt-8">

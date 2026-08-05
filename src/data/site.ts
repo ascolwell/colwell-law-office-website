@@ -80,6 +80,23 @@ export const trustBuilders = [
 
 export type Faq = { q: string; a: string };
 
+// Builds valid FAQPage JSON-LD directly from a page's existing {q, a} array —
+// keeps the structured data and the visible accordion text guaranteed in sync.
+export function faqPageJsonLd(faqs: Faq[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+}
+
 export type PracticeArea = {
   slug: string;
   name: string;

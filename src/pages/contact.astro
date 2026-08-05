@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { site } from "../data/site";
+import { site, faqPageJsonLd } from "../data/site";
 
 const faqs = [
   {
@@ -22,6 +22,8 @@ const faqs = [
   },
 ];
 
+const contactFaqJsonLd = faqPageJsonLd(faqs);
+
 const errorMessages = {
   missing: "Please fill in your name, email, and message before submitting.",
   send: "Something went wrong sending your message. Please try again, or call or email us directly.",
@@ -33,6 +35,7 @@ const errorMessages = {
   title="Contact a Wisconsin Estate Planning Attorney"
   description={`Schedule a free, no-pressure consultation with ${site.firmName}. Serving clients virtually and in person throughout Wisconsin.`}
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(contactFaqJsonLd)} />
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Contact</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Let's Talk About Protecting Your Family</h1>
