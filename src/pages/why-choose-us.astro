@@ -4,7 +4,7 @@ import CtaBanner from "../components/CtaBanner.astro";
 import TrustBar from "../components/TrustBar.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
-import { site, yearsPracticing } from "../data/site";
+import { site, yearsPracticing, faqPageJsonLd } from "../data/site";
 
 const comparison = [
   { theirs: "Billed by the hour, with surprise fees", ours: `Flat-fee pricing from ${site.startingPriceFullPlan}, quoted upfront` },
@@ -32,12 +32,15 @@ const faqs = [
     a: "Life changes, and your plan should keep up. We're always available to review and update your documents as your family, assets, or wishes change over time.",
   },
 ];
+
+const faqJsonLd = faqPageJsonLd(faqs);
 ---
 
 <BaseLayout
   title="Why Choose Colwell Law Office"
   description="See why Wisconsin families choose Colwell Law Office for estate planning: flat-fee pricing, direct attorney access, plain-English guidance, and meetings that fit your life."
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Why Choose Us</p>
     <h1 class="font-display mt-3 max-w-3xl text-4xl font-semibold text-navy-900">

@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
-import { site } from "../../data/site";
+import { site, faqPageJsonLd } from "../../data/site";
 
 const rows = [
   { question: "Avoids Wisconsin probate court?", will: "No", trust: "Yes, for assets held in the trust" },
@@ -32,12 +32,15 @@ const faqs = [
     a: "That depends on your assets, your family situation, and your goals — which is exactly what we'll walk through together during a consultation.",
   },
 ];
+
+const faqJsonLd = faqPageJsonLd(faqs);
 ---
 
 <BaseLayout
   title="Living Trust vs. Will in Wisconsin"
   description="Living trust vs. will: a clear, side-by-side comparison to help Wisconsin families decide which estate planning tool actually fits their needs."
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Living Trust vs. Will: Which Do You Need?</h1>

@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
-import { site } from "../../data/site";
+import { site, faqPageJsonLd } from "../../data/site";
 
 const consequences = [
   {
@@ -49,12 +49,15 @@ const faqs = [
     a: "Most clients complete a full estate plan within a few weeks of their first consultation. It's rarely as complicated — or as expensive — as people expect.",
   },
 ];
+
+const faqJsonLd = faqPageJsonLd(faqs);
 ---
 
 <BaseLayout
   title="What Happens If You Don't Have an Estate Plan"
   description="Without a will or estate plan, Wisconsin law — not you — decides who gets your property, who raises your children, and who manages your affairs."
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">

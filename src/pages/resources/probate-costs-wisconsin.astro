@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
-import { site } from "../../data/site";
+import { site, faqPageJsonLd } from "../../data/site";
 
 const costs = [
   {
@@ -45,12 +45,15 @@ const faqs = [
     a: "We can guide you through the process now, even if there's no trust in place. Many of our clients come to us specifically because they're navigating probate for a parent or spouse and want experienced, compassionate guidance.",
   },
 ];
+
+const faqJsonLd = faqPageJsonLd(faqs);
 ---
 
 <BaseLayout
   title="Probate Costs in Wisconsin"
   description="What does probate actually cost in Wisconsin? Court fees, attorney fees, time, and privacy — and how a living trust can help your family avoid it."
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">What Does Probate Cost in Wisconsin?</h1>

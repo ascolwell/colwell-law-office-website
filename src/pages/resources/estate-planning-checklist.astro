@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
-import { site } from "../../data/site";
+import { site, faqPageJsonLd } from "../../data/site";
 
 const checklistGroups = [
   {
@@ -64,12 +64,15 @@ const faqs = [
     a: "Nothing is required to get started, though a rough list of your assets and any existing estate planning documents can help us move faster. We'll tell you exactly what's helpful once we've talked about your situation.",
   },
 ];
+
+const faqJsonLd = faqPageJsonLd(faqs);
 ---
 
 <BaseLayout
   title="Estate Planning Checklist for Wisconsin Families"
   description="A practical, no-jargon estate planning checklist for Wisconsin families — see where your plan stands today and what to tackle next."
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
   <section class="mx-auto max-w-4xl px-6 py-16 md:py-20">
     <p class="text-sm font-semibold tracking-[0.2em] text-gold-700 uppercase">Resources</p>
     <h1 class="font-display mt-3 text-4xl font-semibold text-navy-900">Your Estate Planning Checklist</h1>
