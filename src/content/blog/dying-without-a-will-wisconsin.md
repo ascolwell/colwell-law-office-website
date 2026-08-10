@@ -1,7 +1,7 @@
 ---
 title: "What Happens If You Die Without a Will in Wisconsin?"
 description: "If you die without a will in Wisconsin, state law — not you — decides who inherits your property. Here's exactly how Wisconsin's intestate succession law works, and who it leaves out."
-pubDate: 2026-08-17
+pubDate: 2026-08-10
 ---
 
 Every few months, someone sits down with me and says some version of: "I know I should have a will, but nothing bad has happened yet, so I haven't gotten around to it." Then they ask the question that's actually on their mind: **what happens if I just... don't?**

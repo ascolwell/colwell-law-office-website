@@ -1,7 +1,7 @@
 ---
 title: "Will vs. Trust: Which Do I Actually Need in Wisconsin?"
 description: "Not sure if you need a will or a trust in Wisconsin? Here's a plain-English breakdown of what each one actually does, what it costs, and how to decide."
-pubDate: 2026-08-10
+pubDate: 2026-08-09
 ---
 
 This is the question I get asked more than any other, usually in the first five minutes of a consultation: *"Do I need a will, or do I need a trust?"*
