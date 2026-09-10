@@ -14,6 +14,7 @@ export const site = {
   hours: "Monday – Friday, 9:00 AM – 5:00 PM (evenings and weekends by appointment)",
   barAdmittedYear: 2017,
   startingPriceFullPlan: "$3,000",
+  paymentLink: "https://square.link/u/6YngFPgS",
 } as const;
 
 // Computed at build time, so this stays accurate without manual updates each year.

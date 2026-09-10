@@ -7,7 +7,6 @@
 /blog-posts/*   /blog/ 301
 /faqs           /faq/        301
 /contact-us     /contact/    301
-/make-a-payment /contact/    301
 /roles-guide    /faq/        301
 /home           /            301
 /testimonials   /why-choose-us/#testimonials 301
