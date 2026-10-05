@@ -10,7 +10,9 @@ export async function onRequestPost(context) {
 
   // Honeypot: bots that blindly fill every field trip this hidden input.
   // Real users never see or fill it. Pretend success without sending mail.
-  if (formData.get("company")) {
+  // The field name avoids words like "company" so browser autofill leaves it alone.
+  if (formData.get("clx_check")) {
+    console.log("Contact form: honeypot field was filled; submission discarded.");
     return Response.redirect(new URL("/contact/thank-you/", request.url), 303);
   }
 
