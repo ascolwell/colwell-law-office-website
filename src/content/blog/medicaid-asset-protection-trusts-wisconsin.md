@@ -1,6 +1,6 @@
 ---
 title: "Medicaid Asset Protection Trusts in Wisconsin: A Complete Guide"
-description: "How a Medicaid Asset Protection Trust works under Wisconsin law, the 60-month look-back, and what Central Wisconsin families need to know before nursing home costs hit."
+description: "How a Medicaid Asset Protection Trust works under Wisconsin law, the 60-month look-back, and what Central Wisconsin families need to know."
 pubDate: 2026-08-12
 ---
 

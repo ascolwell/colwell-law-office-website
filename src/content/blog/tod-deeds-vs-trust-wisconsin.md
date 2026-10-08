@@ -1,6 +1,6 @@
 ---
 title: "Transfer on Death Deeds in Wisconsin: What They Do, and When You Need More"
-description: "TOD deeds let a Wisconsin home skip probate with one recorded document. Here's exactly how they work under Wis. Stat. § 705.15, and the situations where a trust plans for more than a deed ever can."
+description: "TOD deeds let a Wisconsin home skip probate with one recorded document. Here's how they work under Wis. Stat. § 705.15, and when a trust plans for more."
 pubDate: 2026-09-05
 ---
 

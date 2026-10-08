@@ -1,6 +1,6 @@
 ---
 title: "Special Needs Trusts in Wisconsin: A Family's Guide to the Different Types (and Which One You Need)"
-description: "Not all special needs trusts are the same. Here's how first-party, third-party, and pooled SNTs work under Wisconsin law, and how to tell which one your family needs."
+description: "Not all special needs trusts are the same. Here's how first-party, third-party, and pooled SNTs work under Wisconsin law — and which one you need."
 pubDate: 2026-08-18
 ---
 

@@ -116,7 +116,7 @@ export const practiceAreas: PracticeArea[] = [
     name: "Estate Plans",
     seoTitle: "Wisconsin Estate Planning Attorney | Comprehensive Estate Plans",
     metaDescription:
-      "Work with a Wisconsin estate planning attorney to build a complete plan — trust, will, powers of attorney, and healthcare directives — designed around your family.",
+      "Work with a Wisconsin estate planning attorney to build a complete plan — trust, will, powers of attorney, and healthcare directives — for your family.",
     heroHeading: "A Complete Plan to Protect Everyone You Love",
     short: "A complete plan — trust, will, and powers of attorney — built around your family.",
     intro: [
@@ -159,7 +159,7 @@ export const practiceAreas: PracticeArea[] = [
     name: "Revocable Living Trusts",
     seoTitle: "Living Trust Attorney Wisconsin | Revocable Trust Planning",
     metaDescription:
-      "A Wisconsin revocable living trust attorney helping families avoid probate, keep matters private, and simplify things for loved ones. Flat-fee, personalized planning.",
+      "A Wisconsin living trust attorney helping families avoid probate, keep matters private, and simplify things for loved ones. Flat-fee planning.",
     heroHeading: "Keep Your Family Out of Probate Court",
     short: "Avoid probate, keep things private, and make things simple for your family.",
     intro: [

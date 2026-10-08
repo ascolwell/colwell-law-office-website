@@ -1,6 +1,6 @@
 ---
 title: "Will, Trust, or Medicaid Asset Protection Trust? A Decision Flowchart Every Wisconsin Family Should See"
-description: "A plain-English flowchart and guide to help you figure out whether you need a will-based plan, a revocable living trust, or a Medicaid asset protection trust."
+description: "A plain-English flowchart and guide to help you decide between a will-based plan, a revocable living trust, or a Medicaid asset protection trust."
 pubDate: 2026-08-03
 ---
 
